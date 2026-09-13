@@ -4,30 +4,54 @@ function Features() {
   const featuresList = [
     {
       icon: "⚡",
-      title: "Fast Performance",
-      desc: "React's virtual DOM and Vite's HMR ensure your app loads instantly and runs smoothly."
+      badge: "Viteză Extremă",
+      title: "Performanță Instantanee",
+      desc: "Vite 6 și Hot Module Replacement (HMR) asigură reîncărcarea la milisecundă și timpi minimi de procesare."
+    },
+    {
+      icon: "🌙",
+      badge: "UX Adaptabil",
+      title: "Dark Mode Persistent",
+      desc: "Comutare lină între teme cu salvare în localStorage și adaptare la preferințele de sistem ale utilizatorului."
     },
     {
       icon: "📱",
-      title: "Responsive Design",
-      desc: "Looks gorgeous on all devices, from mobile smartphones and tablets to ultra-wide displays."
+      badge: "Mobile-First",
+      title: "100% Responsiv",
+      desc: "Aspect impecabil pe orice dispozitiv, de la smartphone-uri compacte până la monitoare ultra-wide."
     },
     {
       icon: "🎨",
-      title: "Easy to Customize",
-      desc: "Modular components and clean CSS variables make it simple to adapt to your own branding."
+      badge: "Personalizare Simplă",
+      title: "Design Modern & Curat",
+      desc: "Variabile CSS native, efecte de sticlă (glassmorphism), ierarhie semantică corectă și micro-animații fluide."
     }
   ];
 
   return (
-    <section className="features">
-      {featuresList.map((f, i) => (
-        <div className="feature" key={i}>
-          <span className="feature-icon">{f.icon}</span>
-          <h3>{f.title}</h3>
-          <p>{f.desc}</p>
+    <section id="features" className="features-section" aria-label="Funcționalități principale">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-eyebrow">Avantaje Cheie</span>
+          <h2 className="section-title">Construit pentru viitorul web</h2>
+          <p className="section-description">
+            O structură solidă combinată cu cele mai bune practici din ecosistemul React.
+          </p>
         </div>
-      ))}
+
+        <div className="features-grid">
+          {featuresList.map((f, i) => (
+            <div className="feature-card" key={i}>
+              <div className="feature-card-header">
+                <span className="feature-icon" aria-hidden="true">{f.icon}</span>
+                <span className="feature-badge">{f.badge}</span>
+              </div>
+              <h3 className="feature-title">{f.title}</h3>
+              <p className="feature-desc">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
