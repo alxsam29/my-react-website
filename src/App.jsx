@@ -5,10 +5,12 @@ import Hero from './components/Hero.jsx';
 import Stats from './components/Stats.jsx';
 import Projects from './components/Projects.jsx';
 import Services from './components/Services.jsx';
+import Testimonials from './components/Testimonials.jsx';
 import Process from './components/Process.jsx';
 import SocialLinks from './components/SocialLinks.jsx';
 import Footer from './components/Footer.jsx';
 import ContactModal from './components/ContactModal.jsx';
+import MobileActionBar from './components/MobileActionBar.jsx';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -17,7 +19,7 @@ function App() {
       if (savedTheme) {
         return savedTheme === 'dark';
       }
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return true;
     } catch {
       return false;
     }
@@ -59,24 +61,35 @@ function App() {
 
   return (
     <div className={`app-wrapper ${darkMode ? 'dark-mode' : ''}`}>
-      <Header 
-        darkMode={darkMode} 
-        toggleDarkMode={toggleDarkMode} 
+      <div className="aurora-bg" aria-hidden="true">
+        <span className="orb orb-indigo"></span>
+        <span className="orb orb-violet"></span>
+        <span className="orb orb-emerald"></span>
+      </div>
+
+      <Header
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
         onOpenContact={handleOpenContact}
       />
+
       <main>
         <Hero onOpenContact={handleOpenContact} />
         <Stats />
         <Projects />
         <Services onOpenContact={handleOpenContact} />
+        <Testimonials />
         <Process />
         <SocialLinks onOpenContact={handleOpenContact} />
       </main>
+
       <Footer />
-      
-      <ContactModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+
+      <MobileActionBar onOpenContact={handleOpenContact} />
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
       />
     </div>
   );

@@ -1,6 +1,9 @@
 import React from 'react';
+import useScrollReveal from '../hooks/useScrollReveal.js';
 
 function Projects() {
+  const sectionRef = useScrollReveal();
+
   const featuredProject = {
     title: "FolioTech",
     subtitle: "Platformă Interactivă de Gestiune & Vânzări",
@@ -33,7 +36,7 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="projects-section" aria-label="Proiecte recente">
+    <section id="projects" className="projects-section reveal-init" ref={sectionRef} aria-label="Proiecte recente">
       <div className="container">
         <div className="section-header">
           <span className="section-eyebrow">Portofoliu & Lucrări</span>
@@ -122,7 +125,7 @@ function Projects() {
         </div>
 
         {/* Alte proiecte din portofoliu */}
-        <div className="other-projects-grid">
+        <div className="other-projects-grid reveal-stagger">
           {otherProjects.map((proj, idx) => (
             <div className="project-card" key={idx}>
               <div className="project-card-header">

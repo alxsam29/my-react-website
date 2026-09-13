@@ -32,8 +32,7 @@
       (function() {
         try {
           const savedTheme = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          if (savedTheme !== 'light') {
             document.documentElement.classList.add('dark-mode-preload');
           }
         } catch (e) {}
