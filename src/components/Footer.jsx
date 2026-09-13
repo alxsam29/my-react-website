@@ -12,11 +12,15 @@ function Footer() {
           <div className="footer-brand">
             <div className="footer-logo">
               <span className="brand-icon">⚡</span>
-              <span className="brand-title">Alex.dev</span>
+              <span className="brand-title">Alex Sârbu</span>
             </div>
             <p className="footer-tagline">
-              Dezvoltator Web specializat în site-uri de înaltă performanță, platforme interactive și experiențe vizuale captivante.
+              Web Developer specializat în site-uri de înaltă performanță, platforme interactive și magazine online moderne.
             </p>
+            <div className="footer-contact-info">
+              <p>📱 WhatsApp / Tel: <a href="https://wa.me/40727316319" target="_blank" rel="noopener noreferrer">+40 727 316 319</a></p>
+              <p>✉️ Email: <a href="mailto:alxsarbu29@gmail.com">alxsarbu29@gmail.com</a></p>
+            </div>
           </div>
 
           <div className="footer-nav">
@@ -25,7 +29,7 @@ function Footer() {
               <li><a href="#projects">Proiecte Recente</a></li>
               <li><a href="#services">Servicii Oferite</a></li>
               <li><a href="#process">Procesul de Lucru</a></li>
-              <li><a href="#contact">Contact & Bio Links</a></li>
+              <li><a href="#contact">Contact & WhatsApp</a></li>
             </ul>
           </div>
 
@@ -36,14 +40,14 @@ function Footer() {
               <span className="tech-tag">Vite 6</span>
               <span className="tech-tag">JavaScript ES6+</span>
               <span className="tech-tag">CSS3 / Flexbox / Grid</span>
-              <span className="tech-tag">Vercel Deploy</span>
-              <span className="tech-tag">Git / GitHub</span>
+              <span className="tech-tag">Vercel</span>
+              <span className="tech-tag">GitHub</span>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Alex (alxsam29). Toate drepturile rezervate.</p>
+          <p>&copy; {new Date().getFullYear()} Alex Sârbu (alxsam29). Toate drepturile rezervate.</p>
           <div className="footer-bottom-actions">
             <a 
               href="https://github.com/alxsam29" 
@@ -51,7 +55,7 @@ function Footer() {
               rel="noopener noreferrer" 
               className="github-footer-link"
             >
-              GitHub ↗
+              GitHub: alxsam29 ↗
             </a>
             <button 
               className="back-to-top-btn" 

@@ -133,6 +133,11 @@ main {
   }
 }
 
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* ==========================================================================
    Header & Navigation
    ========================================================================== */
@@ -328,11 +333,6 @@ main {
   animation: rotateRing 20s linear infinite;
 }
 
-@keyframes rotateRing {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .hero-status-pill {
   display: inline-flex;
   align-items: center;
@@ -455,21 +455,28 @@ main {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 1rem;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.quick-pill:hover:not(.quick-pill-static) {
+.quick-pill:hover {
   background: rgba(255, 255, 255, 0.18);
   transform: translateY(-1px);
   color: #ffffff;
 }
 
-.quick-pill-static {
-  opacity: 0.75;
+.quick-pill-whatsapp {
+  background: rgba(34, 197, 94, 0.22) !important;
+  border-color: rgba(34, 197, 94, 0.45) !important;
+  color: #4ade80 !important;
+  font-weight: 600;
+}
+
+.quick-pill-whatsapp:hover {
+  background: rgba(34, 197, 94, 0.32) !important;
 }
 
 /* ==========================================================================
@@ -1069,7 +1076,7 @@ main {
 
 .bio-card-highlight {
   border: 2px solid #22c55e;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, var(--card-bg) 100%);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, var(--card-bg) 100%);
 }
 
 .bio-card-icon {
@@ -1119,7 +1126,7 @@ main {
 }
 
 /* ==========================================================================
-   Project Inquiry Modal
+   Project Inquiry Modal & Dual Action (WhatsApp + Email)
    ========================================================================== */
 .modal-backdrop {
   position: fixed;
@@ -1231,11 +1238,38 @@ main {
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-.modal-actions {
+.modal-actions-dual {
   display: flex;
-  justify-content: flex-end;
   gap: 0.75rem;
   margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.modal-actions-dual button {
+  flex: 1;
+  min-width: 180px;
+}
+
+.btn-whatsapp-direct {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-whatsapp-direct:hover {
+  background: #16a34a;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);
+  transform: translateY(-1px);
 }
 
 .btn-primary {
@@ -1245,6 +1279,7 @@ main {
   padding: 0.75rem 1.4rem;
   border-radius: 10px;
   font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -1282,7 +1317,7 @@ main {
 
 .success-icon {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .modal-success-state h3 {
@@ -1293,8 +1328,45 @@ main {
 
 .modal-success-state p {
   color: var(--text-secondary);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
   line-height: 1.6;
+}
+
+.success-notice-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  text-align: center;
+}
+
+.success-notice-box span {
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.btn-whatsapp-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #22c55e;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  margin-top: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.btn-whatsapp-action:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4);
 }
 
 /* ==========================================================================
@@ -1336,6 +1408,22 @@ main {
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.footer-contact-info {
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.footer-contact-info a {
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-contact-info a:hover {
+  text-decoration: underline;
 }
 
 .footer-nav h4,
@@ -1510,5 +1598,9 @@ main {
   .bio-card-action {
     width: 100%;
     text-align: center;
+  }
+
+  .modal-actions-dual button {
+    width: 100%;
   }
 }

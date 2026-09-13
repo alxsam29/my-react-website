@@ -16,12 +16,12 @@ function Hero({ onOpenContact }) {
       </div>
 
       <h1 className="hero-title">
-        Salut, sunt <span className="hero-name-highlight">Alex</span> 👋 <br />
+        Salut, sunt <span className="hero-name-highlight">Alex Sârbu</span> 👋 <br />
         <span className="hero-gradient-text">Web Developer & UI Creator</span>
       </h1>
 
       <p className="hero-subtitle">
-        Construiesc site-uri web rapide, aplicații interactive (precum <strong>FolioTech</strong>) și magazine online de impact. Transform ideile tale în produse digitale de succes, optimizate pentru mobil și conversie.
+        Construiesc site-uri web ultra-rapide, aplicații interactive (precum <strong>FolioTech</strong>) și magazine online de impact. Transform ideile tale în produse digitale de succes, optimizate pentru mobil și vânzări.
       </p>
 
       <div className="hero-cta-group">
@@ -41,12 +41,18 @@ function Hero({ onOpenContact }) {
 
       <div className="hero-quick-pills">
         <a 
-          href="https://wa.me/?text=Salut%2C%20am%20v%C4%83zut%20portofoliul%20t%C4%83u%20%C8%99i%20a%C8%99%20dori%20s%C4%83%20discut%C4%83m!" 
+          href="https://wa.me/40727316319?text=Salut%20Alex%2C%20am%20v%C4%83zut%20portofoliul%20t%C4%83u%20%C8%99i%20a%C8%99%20dori%20s%C4%83%20discut%C4%83m%20despre%20un%20proiect%20web!" 
           target="_blank" 
           rel="noopener noreferrer" 
+          className="quick-pill quick-pill-whatsapp"
+        >
+          <span>💬</span> WhatsApp: 0727 316 319
+        </a>
+        <a 
+          href="mailto:alxsarbu29@gmail.com" 
           className="quick-pill"
         >
-          <span>💬</span> Chat pe WhatsApp
+          <span>✉️</span> alxsarbu29@gmail.com
         </a>
         <a 
           href="https://github.com/alxsam29" 
@@ -56,9 +62,6 @@ function Hero({ onOpenContact }) {
         >
           <span>🐙</span> GitHub: alxsam29
         </a>
-        <span className="quick-pill quick-pill-static">
-          <span>⚡</span> React 19 • Vite • UI/UX
-        </span>
       </div>
     </section>
   );
