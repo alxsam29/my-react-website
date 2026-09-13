@@ -3,13 +3,14 @@ import './App.css';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import Stats from './components/Stats.jsx';
-import Features from './components/Features.jsx';
-import Newsletter from './components/Newsletter.jsx';
+import Projects from './components/Projects.jsx';
+import Services from './components/Services.jsx';
+import Process from './components/Process.jsx';
+import SocialLinks from './components/SocialLinks.jsx';
 import Footer from './components/Footer.jsx';
 import ContactModal from './components/ContactModal.jsx';
 
 function App() {
-  // Inițializare temă din localStorage sau preferința sistemului
   const [darkMode, setDarkMode] = useState(() => {
     try {
       const savedTheme = localStorage.getItem('theme');
@@ -24,18 +25,15 @@ function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Sincronizare Dark Mode cu localStorage și atributul pe <html>
   useEffect(() => {
     try {
       localStorage.setItem('theme', darkMode ? 'dark' : 'light');
     } catch (e) {
-      console.warn('Nu s-a putut salva tema în localStorage:', e);
+      console.warn('Nu s-a putut salva tema:', e);
     }
-    // Elimină clasa temporară anti-FOUC dacă exista
     document.documentElement.classList.remove('dark-mode-preload');
   }, [darkMode]);
 
-  // Ascultă schimbările preferințelor din sistem dacă utilizatorul nu a setat o preferință manuală
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e) => {
@@ -55,18 +53,24 @@ function App() {
     setDarkMode((prev) => !prev);
   };
 
+  const handleOpenContact = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className={`app-wrapper ${darkMode ? 'dark-mode' : ''}`}>
       <Header 
         darkMode={darkMode} 
         toggleDarkMode={toggleDarkMode} 
-        onOpenContact={() => setIsModalOpen(true)}
+        onOpenContact={handleOpenContact}
       />
       <main>
-        <Hero onOpenContact={() => setIsModalOpen(true)} />
+        <Hero onOpenContact={handleOpenContact} />
         <Stats />
-        <Features />
-        <Newsletter />
+        <Projects />
+        <Services onOpenContact={handleOpenContact} />
+        <Process />
+        <SocialLinks onOpenContact={handleOpenContact} />
       </main>
       <Footer />
       

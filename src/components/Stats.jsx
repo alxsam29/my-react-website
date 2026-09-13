@@ -2,14 +2,14 @@ import React from 'react';
 
 function Stats() {
   const statsList = [
-    { value: '< 50ms', label: 'Timp răspuns HMR (Vite 6)' },
-    { value: 'React 19', label: 'Cea mai nouă versiune React' },
-    { value: '100%', label: 'Design complet adaptabil' },
-    { value: '0 Dependențe grele', label: 'CSS Vanilla de înaltă performanță' }
+    { value: '< 1 secundă', label: 'Timp mediu de încărcare pagini' },
+    { value: '100% Mobile', label: 'Optimizat pentru traficul din Social Media' },
+    { value: 'React 19', label: 'Arhitectură modernă și scalabilă' },
+    { value: 'Suport Dedicat', label: 'Asistență și mentenanță continuă' }
   ];
 
   return (
-    <section id="stats" className="stats-section" aria-label="Statistici cheie">
+    <section id="stats" className="stats-section" aria-label="Metrici cheie dezvoltator">
       <div className="container">
         <div className="stats-grid">
           {statsList.map((stat, idx) => (

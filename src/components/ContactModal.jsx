@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 function ContactModal({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    contact: '',
+    projectType: 'Site de Prezentare / Landing Page',
+    budget: '',
+    details: ''
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Închidere la apăsarea tastei Escape
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isOpen) {
@@ -16,7 +21,6 @@ function ContactModal({ isOpen, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Previne derularea paginii din fundal când modalul este deschis
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -33,15 +37,20 @@ function ContactModal({ isOpen, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) return;
+    if (!formData.name || !formData.contact) return;
 
     setIsLoading(true);
-    // Simulare trimitere asincronă rapidă
     setTimeout(() => {
       setIsLoading(false);
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-    }, 600);
+      setFormData({
+        name: '',
+        contact: '',
+        projectType: 'Site de Prezentare / Landing Page',
+        budget: '',
+        details: ''
+      });
+    }, 650);
   };
 
   return (
@@ -64,24 +73,26 @@ function ContactModal({ isOpen, onClose }) {
         {isSubmitted ? (
           <div className="modal-success-state">
             <div className="success-icon">🎉</div>
-            <h3 id="modal-title">Mesaj trimis cu succes!</h3>
-            <p>Îți mulțumim pentru interes. Te vom contacta în cel mai scurt timp posibil.</p>
+            <h3 id="modal-title">Cerere trimisă cu succes!</h3>
+            <p>
+              Îți mulțumesc pentru mesaj! Voi analiza cerințele proiectului tău și te voi contacta în cel mai scurt timp (de obicei în mai puțin de 24 de ore).
+            </p>
             <button className="btn-primary" onClick={onClose}>
-              Închide
+              Super, mulțumesc!
             </button>
           </div>
         ) : (
           <form className="modal-form" onSubmit={handleSubmit}>
             <div className="modal-header">
-              <span className="modal-tag">Interactiv</span>
-              <h3 id="modal-title">Intră în legătură cu noi</h3>
-              <p>Trimite-ne un mesaj sau solicită acces la versiunea demo completă.</p>
+              <span className="modal-tag">Estimare Gratuită</span>
+              <h3 id="modal-title">Hai să Discutăm Despre Proiectul Tău</h3>
+              <p>Lasă-mi câteva detalii și hai să stabilim cea mai bună soluție tehnică.</p>
             </div>
 
             <div className="form-group">
-              <label htmlFor="modal-name">Nume complet</label>
+              <label htmlFor="inquiry-name">Numele tău</label>
               <input
-                id="modal-name"
+                id="inquiry-name"
                 type="text"
                 required
                 placeholder="ex. Alex Popescu"
@@ -91,25 +102,40 @@ function ContactModal({ isOpen, onClose }) {
             </div>
 
             <div className="form-group">
-              <label htmlFor="modal-email">Adresă de email</label>
+              <label htmlFor="inquiry-contact">Email sau Număr WhatsApp</label>
               <input
-                id="modal-email"
-                type="email"
+                id="inquiry-contact"
+                type="text"
                 required
-                placeholder="alex@exemplu.ro"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="ex. alex@email.com sau 07xxxxxxxx"
+                value={formData.contact}
+                onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="modal-message">Mesaj sau întrebare (opțional)</label>
+              <label htmlFor="inquiry-type">Tipul proiectului</label>
+              <select
+                id="inquiry-type"
+                value={formData.projectType}
+                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+              >
+                <option value="Site de Prezentare / Landing Page">Site de Prezentare / Landing Page</option>
+                <option value="Aplicație Web / Platformă Interactivă">Aplicație Web / Platformă Interactivă (stil FolioTech)</option>
+                <option value="Magazin Online / E-Commerce">Magazin Online / E-Commerce</option>
+                <option value="Redesign / Modernizare Site Existent">Redesign / Modernizare Site Existent</option>
+                <option value="Altceva / Consultanță">Altceva / Consultanță Tehnică</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="inquiry-details">Scurtă descriere a proiectului</label>
               <textarea
-                id="modal-message"
+                id="inquiry-details"
                 rows="3"
-                placeholder="Cum te putem ajuta astăzi?"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Spune-mi pe scurt despre afacerea ta și ce dorești să realizezi..."
+                value={formData.details}
+                onChange={(e) => setFormData({ ...formData, details: e.target.value })}
               ></textarea>
             </div>
 
@@ -126,7 +152,7 @@ function ContactModal({ isOpen, onClose }) {
                 className="btn-primary" 
                 disabled={isLoading}
               >
-                {isLoading ? 'Se trimite...' : 'Trimite mesajul 🚀'}
+                {isLoading ? 'Se trimite...' : 'Trimite Cererea 🚀'}
               </button>
             </div>
           </form>

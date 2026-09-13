@@ -10,19 +10,22 @@ function Header({ darkMode, toggleDarkMode, onOpenContact }) {
       <div className="container header-container">
         <a href="#" className="brand-logo" onClick={closeMenu}>
           <span className="brand-icon">⚡</span>
-          <span className="brand-text">My Modern Site</span>
+          <span className="brand-text">Alex<span className="brand-dot">.dev</span></span>
         </a>
 
         <nav className={`main-nav ${mobileMenuOpen ? 'nav-open' : ''}`} aria-label="Navigație principală">
           <ul className="nav-links">
             <li>
-              <a href="#features" onClick={closeMenu}>Funcționalități</a>
+              <a href="#projects" onClick={closeMenu}>Proiecte</a>
             </li>
             <li>
-              <a href="#stats" onClick={closeMenu}>Performanță</a>
+              <a href="#services" onClick={closeMenu}>Servicii</a>
             </li>
             <li>
-              <a href="#newsletter" onClick={closeMenu}>Noutăți</a>
+              <a href="#process" onClick={closeMenu}>Cum Lucrez</a>
+            </li>
+            <li>
+              <a href="#contact" onClick={closeMenu}>Link in Bio</a>
             </li>
           </ul>
 
@@ -34,7 +37,7 @@ function Header({ darkMode, toggleDarkMode, onOpenContact }) {
                 onOpenContact();
               }}
             >
-              Contact
+              Cere o Ofertă
             </button>
 
             <button 
