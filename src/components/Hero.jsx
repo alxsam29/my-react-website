@@ -1,8 +1,23 @@
 import React from 'react';
 
+const WHATSAPP_URL =
+  'https://wa.me/40727316319?text=Salut%20Alex%2C%20am%20v%C4%83zut%20portofoliul%20t%C4%83u%20%C8%99i%20a%C8%99%20dori%20s%C4%83%20discut%C4%83m%20despre%20un%20proiect%20web!';
+
+const trustItems = [
+  { icon: '⭐', text: '100% Satisfacție Clienți' },
+  { icon: '⚡', text: 'Livrare Rapidă (3-7 zile)' },
+  { icon: '🛡️', text: 'Cod Curat & SEO Inclus' },
+];
+
 function Hero({ onOpenContact }) {
   return (
     <section className="hero" aria-label="Prezentare dezvoltator">
+      <div className="hero-aurora" aria-hidden="true">
+        <span className="hero-orb hero-orb-indigo"></span>
+        <span className="hero-orb hero-orb-violet"></span>
+        <span className="hero-orb hero-orb-emerald"></span>
+      </div>
+
       <div className="hero-profile-area">
         <div className="avatar-wrapper">
           <div className="avatar-icon">💻</div>
@@ -11,7 +26,7 @@ function Hero({ onOpenContact }) {
 
         <div className="hero-status-pill">
           <span className="badge-pulse"></span>
-          <span>Disponibil pentru proiecte & colaborări</span>
+          <span>Disponibil pentru proiecte luna aceasta • Răspuns în sub 15 min</span>
         </div>
       </div>
 
@@ -25,39 +40,56 @@ function Hero({ onOpenContact }) {
       </p>
 
       <div className="hero-cta-group">
-        <button 
-          className="btn-hero-primary" 
+        <button
+          className="btn-hero-primary"
           onClick={onOpenContact}
         >
           Cere o Ofertă Gratuită 🚀
         </button>
-        <a 
-          href="#projects" 
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-hero-whatsapp"
+        >
+          <span aria-hidden="true">💬</span> WhatsApp Direct
+        </a>
+        <a
+          href="#projects"
           className="btn-hero-secondary"
         >
           Vezi Proiectele Mele ↓
         </a>
       </div>
 
+      <div className="hero-trust-bar" aria-label="Garanții și încredere">
+        {trustItems.map((item, idx) => (
+          <span className="trust-item" key={idx}>
+            <span className="trust-icon" aria-hidden="true">{item.icon}</span>
+            {item.text}
+          </span>
+        ))}
+      </div>
+
       <div className="hero-quick-pills">
-        <a 
-          href="https://wa.me/40727316319?text=Salut%20Alex%2C%20am%20v%C4%83zut%20portofoliul%20t%C4%83u%20%C8%99i%20a%C8%99%20dori%20s%C4%83%20discut%C4%83m%20despre%20un%20proiect%20web!" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="quick-pill quick-pill-whatsapp"
         >
           <span>💬</span> WhatsApp: 0727 316 319
         </a>
-        <a 
-          href="mailto:alxsarbu29@gmail.com" 
+        <a
+          href="mailto:alxsarbu29@gmail.com"
           className="quick-pill"
         >
           <span>✉️</span> alxsarbu29@gmail.com
         </a>
-        <a 
-          href="https://github.com/alxsam29" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://github.com/alxsam29"
+          target="_blank"
+          rel="noopener noreferrer"
           className="quick-pill"
         >
           <span>🐙</span> GitHub: alxsam29

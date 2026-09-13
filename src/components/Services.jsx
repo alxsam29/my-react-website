@@ -1,6 +1,9 @@
 import React from 'react';
+import useScrollReveal from '../hooks/useScrollReveal.js';
 
 function Services({ onOpenContact }) {
+  const sectionRef = useScrollReveal();
+
   const servicesList = [
     {
       icon: "🎯",
@@ -29,7 +32,7 @@ function Services({ onOpenContact }) {
   ];
 
   return (
-    <section id="services" className="services-section" aria-label="Servicii oferite">
+    <section id="services" className="services-section reveal-init" ref={sectionRef} aria-label="Servicii oferite">
       <div className="container">
         <div className="section-header">
           <span className="section-eyebrow">Ce Pot Construi Pentru Tine</span>
@@ -39,7 +42,7 @@ function Services({ onOpenContact }) {
           </p>
         </div>
 
-        <div className="services-grid">
+        <div className="services-grid reveal-stagger">
           {servicesList.map((srv, idx) => (
             <div className="service-card" key={idx}>
               <div className="service-icon-box">{srv.icon}</div>

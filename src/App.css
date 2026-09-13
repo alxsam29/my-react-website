@@ -1,65 +1,93 @@
 /* ==========================================================================
-   Design Tokens & Base Variables
+   Design Tokens — „Cyber-Studio Glass"
    ========================================================================== */
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --bg-primary: #f3f4fa;
+  --bg-secondary: rgba(255, 255, 255, 0.5);
+  --bg-tertiary: rgba(15, 23, 42, 0.05);
+  --text-primary: #0b1020;
+  --text-secondary: #4b5568;
+  --text-muted: #8b93a7;
 
-  --brand-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+  --brand-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 55%, #d946ef 100%);
   --brand-primary: #6366f1;
   --brand-primary-hover: #4f46e5;
-  --brand-accent: #a855f7;
-  --accent-green: #22c55e;
+  --brand-accent: #8b5cf6;
+  --accent-green: #10b981;
+  --accent-green-strong: #059669;
+  --accent-amber: #f59e0b;
 
-  --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --card-hover-border: #818cf8;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(15, 23, 42, 0.09);
+  --glass-hover-border: rgba(99, 102, 241, 0.45);
+  --glass-shadow: 0 10px 40px rgba(15, 23, 42, 0.09);
+  --glass-blur: blur(20px);
 
-  --header-bg: rgba(255, 255, 255, 0.85);
-  --footer-bg: #f8fafc;
-  --footer-border: #e2e8f0;
+  --chip-bg: rgba(99, 102, 241, 0.08);
+  --chip-border: rgba(99, 102, 241, 0.22);
+  --chip-color: #4f46e5;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 28px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.2);
+  --header-bg: rgba(243, 244, 250, 0.68);
+  --footer-bg: rgba(255, 255, 255, 0.35);
+  --input-bg: rgba(255, 255, 255, 0.8);
+  --modal-bg: rgba(255, 255, 255, 0.82);
+
+  --title-grad: linear-gradient(120deg, #0b1020 30%, #4338ca 100%);
+  --stat-grad: linear-gradient(120deg, #4f46e5 0%, #8b5cf6 100%);
+
+  --aurora-opacity: 0.5;
+
+  --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 10px 28px rgba(15, 23, 42, 0.1);
+  --shadow-glow: 0 0 46px rgba(99, 102, 241, 0.2);
 
   color-scheme: light dark;
 }
 
 .dark-mode {
-  --bg-primary: #0b0f19;
-  --bg-secondary: #0f172a;
-  --bg-tertiary: #1e293b;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
+  --bg-primary: #070a13;
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  --bg-tertiary: rgba(255, 255, 255, 0.05);
+  --text-primary: #f1f5f9;
+  --text-secondary: #a3adc2;
   --text-muted: #64748b;
 
-  --card-bg: #131b2e;
-  --card-border: #222f49;
-  --card-hover-border: #6366f1;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover-border: rgba(139, 92, 246, 0.55);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --glass-blur: blur(20px);
 
-  --header-bg: rgba(11, 15, 25, 0.85);
-  --footer-bg: #090d16;
-  --footer-border: #1e293b;
+  --chip-bg: rgba(99, 102, 241, 0.14);
+  --chip-border: rgba(99, 102, 241, 0.3);
+  --chip-color: #a5b4fc;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 35px rgba(124, 58, 237, 0.35);
+  --header-bg: rgba(7, 10, 19, 0.62);
+  --footer-bg: rgba(7, 10, 19, 0.4);
+  --input-bg: rgba(11, 15, 26, 0.6);
+  --modal-bg: rgba(13, 17, 30, 0.82);
+
+  --title-grad: linear-gradient(120deg, #ffffff 20%, #c7d2fe 65%, #a5b4fc 100%);
+  --stat-grad: linear-gradient(120deg, #818cf8 0%, #c084fc 100%);
+
+  --aurora-opacity: 1;
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 52px rgba(124, 58, 237, 0.3);
 }
 
 .dark-mode-preload {
-  background-color: #0b0f19;
-  color: #f8fafc;
+  background-color: #070a13;
+  color: #f1f5f9;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 92px;
 }
 
 * {
@@ -71,7 +99,7 @@ html {
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  background-color: var(--bg-primary);
+  background-color: #f3f4fa;
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
@@ -84,6 +112,9 @@ body {
   flex-direction: column;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  isolation: isolate;
+  position: relative;
 }
 
 main {
@@ -91,9 +122,71 @@ main {
 }
 
 .container {
-  max-width: 1140px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+/* Feedback tactil — apăsare magnetică pe butoane */
+button:active,
+.btn-hero-secondary:active,
+.btn-live-project:active,
+.bio-link-card:active,
+.bar-btn:active,
+.btn-service-inquire:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Aurora Mesh Glow — fundal ambiental animat (GPU: doar transform/opacity)
+   ========================================================================== */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--aurora-opacity);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.orb-indigo {
+  width: 46vw;
+  height: 46vw;
+  min-width: 380px;
+  min-height: 380px;
+  top: -12%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.34), transparent 70%);
+  animation: orbDrift1 22s ease-in-out infinite alternate;
+}
+
+.orb-violet {
+  width: 40vw;
+  height: 40vw;
+  min-width: 340px;
+  min-height: 340px;
+  top: 34%;
+  right: -12%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent 70%);
+  animation: orbDrift2 27s ease-in-out infinite alternate;
+}
+
+.orb-emerald {
+  width: 36vw;
+  height: 36vw;
+  min-width: 300px;
+  min-height: 300px;
+  bottom: -10%;
+  left: 24%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22), transparent 70%);
+  animation: orbDrift3 19s ease-in-out infinite alternate;
 }
 
 /* ==========================================================================
@@ -129,7 +222,7 @@ main {
   50% {
     transform: scale(1.1);
     opacity: 1;
-    box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);
   }
 }
 
@@ -138,17 +231,106 @@ main {
   to { transform: rotate(360deg); }
 }
 
+@keyframes orbDrift1 {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(7vw, 5vh, 0) scale(1.18); }
+}
+
+@keyframes orbDrift2 {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to { transform: translate3d(-6vw, 8vh, 0) scale(0.92); }
+}
+
+@keyframes orbDrift3 {
+  from { transform: translate3d(0, 0, 0) scale(0.95); }
+  to { transform: translate3d(5vw, -7vh, 0) scale(1.15); }
+}
+
+@keyframes ctaHalo {
+  0%, 100% {
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.5), 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 44px rgba(139, 92, 246, 0.7), 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes waHalo {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.45), 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 34px rgba(16, 185, 129, 0.8), 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@keyframes barPulse {
+  0%, 100% { box-shadow: 0 4px 18px rgba(16, 185, 129, 0.35); }
+  50% { box-shadow: 0 4px 28px rgba(16, 185, 129, 0.65); }
+}
+
 /* ==========================================================================
-   Header & Navigation
+   Scroll Reveal (fade-in-up la derulare, cu stagger pe copil)
+   ========================================================================== */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-init.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-revealed .reveal-stagger > * {
+  opacity: 1;
+  transform: none;
+}
+
+.is-revealed .reveal-stagger > *:nth-child(2) { transition-delay: 0.08s; }
+.is-revealed .reveal-stagger > *:nth-child(3) { transition-delay: 0.16s; }
+.is-revealed .reveal-stagger > *:nth-child(4) { transition-delay: 0.24s; }
+.is-revealed .reveal-stagger > *:nth-child(5) { transition-delay: 0.32s; }
+.is-revealed .reveal-stagger > *:nth-child(6) { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .reveal-init,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .orb,
+  .hero-orb,
+  .btn-hero-primary,
+  .btn-hero-whatsapp,
+  .avatar-ring,
+  .bar-btn-whatsapp {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Header & Navigation — sticlă translucidă
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background-color: var(--header-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--card-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -179,7 +361,7 @@ main {
   background: var(--brand-gradient);
   color: white;
   font-size: 1.15rem;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.4);
 }
 
 .brand-text {
@@ -233,18 +415,18 @@ main {
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-header-cta:hover {
   background: var(--brand-primary-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.45);
 }
 
 .dark-mode-toggle {
-  background: rgba(125, 125, 125, 0.1);
-  border: 1px solid var(--card-border);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -259,7 +441,7 @@ main {
 
 .dark-mode-toggle:hover {
   transform: rotate(15deg) scale(1.08);
-  background: rgba(125, 125, 125, 0.2);
+  background: var(--glass-bg);
 }
 
 .mobile-menu-btn {
@@ -272,27 +454,62 @@ main {
 }
 
 /* ==========================================================================
-   Hero Profile (Bio Section)
+   Hero — impact în primele 3 secunde, cu Aurora Borealis local
    ========================================================================== */
 .hero {
   text-align: center;
-  padding: 5.5rem 1.5rem 5rem;
-  background: linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #4c0519 100%);
+  padding: 6rem 1.5rem 5.5rem;
+  background: #070a13;
   color: white;
   position: relative;
   overflow: hidden;
   animation: fadeIn 0.8s ease-out;
 }
 
-.hero::before {
-  content: '';
+.hero-aurora {
   position: absolute;
-  top: -40%;
-  left: -40%;
-  width: 180%;
-  height: 180%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 65%);
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.hero-orb-indigo {
+  width: 560px;
+  height: 560px;
+  top: -18%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.42), transparent 70%);
+  animation: orbDrift1 20s ease-in-out infinite alternate;
+}
+
+.hero-orb-violet {
+  width: 480px;
+  height: 480px;
+  top: 30%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.38), transparent 70%);
+  animation: orbDrift2 24s ease-in-out infinite alternate;
+}
+
+.hero-orb-emerald {
+  width: 420px;
+  height: 420px;
+  bottom: -20%;
+  left: 28%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.26), transparent 70%);
+  animation: orbDrift3 18s ease-in-out infinite alternate;
+}
+
+.hero > *:not(.hero-aurora) {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-profile-area {
@@ -321,7 +538,7 @@ main {
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 28px rgba(99, 102, 241, 0.5);
   z-index: 2;
 }
 
@@ -337,55 +554,60 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
-  padding: 0.35rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.4rem 1.1rem;
   border-radius: 9999px;
   font-size: 0.85rem;
   font-weight: 600;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.12);
 }
 
 .badge-pulse {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--accent-green);
+  background-color: #10b981;
   display: inline-block;
   animation: pulseGlow 2s infinite;
 }
 
 .hero-title {
-  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
   font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.25rem;
-  max-width: 850px;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.35rem;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  text-wrap: balance;
 }
 
 .hero-name-highlight {
   color: #fbcfe8;
   text-decoration: underline;
   text-decoration-color: #ec4899;
-  text-underline-offset: 4px;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
 }
 
 .hero-gradient-text {
-  background: linear-gradient(to right, #ffffff, #c7d2fe);
+  background: linear-gradient(110deg, #ffffff 15%, #c7d2fe 55%, #a5b4fc 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.82);
   max-width: 680px;
-  margin: 0 auto 2.25rem;
+  margin: 0 auto 2.4rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .hero-subtitle strong {
@@ -397,47 +619,124 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 1.1rem;
   flex-wrap: wrap;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
 }
 
+/* CTA principal — halo violet-indigo pulsant + luciu reflexiv la hover */
 .btn-hero-primary {
-  padding: 0.9rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  padding: 0.95rem 2.3rem;
   font-size: 1.05rem;
   font-weight: 700;
-  background-color: #ffffff;
-  color: #31104b;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  animation: ctaHalo 2.6s ease-in-out infinite;
+  transition: filter 0.2s ease;
+}
+
+.btn-hero-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+
+.btn-hero-primary:hover::after {
+  left: 135%;
 }
 
 .btn-hero-primary:hover {
+  filter: brightness(1.1);
+}
+
+.btn-hero-primary:active {
+  filter: brightness(0.92);
+}
+
+/* CTA WhatsApp — verde smarald vibrant cu pulsație continuă */
+.btn-hero-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 9999px;
+  animation: waHalo 2.2s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-hero-whatsapp:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  background-color: #f8fafc;
+  filter: brightness(1.08);
+}
+
+.btn-hero-whatsapp:active {
+  transform: scale(0.98);
 }
 
 .btn-hero-secondary {
-  padding: 0.9rem 2rem;
+  padding: 0.95rem 2rem;
   font-size: 1.05rem;
   font-weight: 600;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 9999px;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-hero-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.22);
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
+}
+
+/* Bara de Încredere Rapidă — micro social proof */
+.hero-trust-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.4rem;
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 0.35rem 0.9rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.trust-icon {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
 }
 
 .hero-quick-pills {
@@ -452,41 +751,40 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 9999px;
   padding: 0.45rem 1rem;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .quick-pill:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.14);
   transform: translateY(-1px);
   color: #ffffff;
 }
 
 .quick-pill-whatsapp {
-  background: rgba(34, 197, 94, 0.22) !important;
-  border-color: rgba(34, 197, 94, 0.45) !important;
-  color: #4ade80 !important;
+  background: rgba(16, 185, 129, 0.16) !important;
+  border-color: rgba(16, 185, 129, 0.45) !important;
+  color: #6ee7b7 !important;
   font-weight: 600;
 }
 
 .quick-pill-whatsapp:hover {
-  background: rgba(34, 197, 94, 0.32) !important;
+  background: rgba(16, 185, 129, 0.28) !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
-   Stats Section
+   Stats Section — dale de sticlă
    ========================================================================== */
 .stats-section {
   padding: 2.8rem 0;
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--card-border);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .stats-grid {
@@ -497,24 +795,27 @@ main {
 }
 
 .stat-card {
-  padding: 1.4rem 1rem;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--brand-primary);
+  transform: translateY(-4px);
+  border-color: var(--glass-hover-border);
+  box-shadow: var(--shadow-glow);
 }
 
 .stat-value {
   font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: var(--brand-gradient);
+  background: var(--stat-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.2rem;
@@ -527,7 +828,7 @@ main {
 }
 
 /* ==========================================================================
-   Section Common Headers
+   Section Common Headers — tipografie editorială bold
    ========================================================================== */
 .section-header {
   text-align: center;
@@ -540,16 +841,26 @@ main {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--brand-primary);
-  margin-bottom: 0.5rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  border-radius: 9999px;
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 0.85rem;
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+  background: var(--title-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-wrap: balance;
 }
 
 .section-description {
@@ -559,29 +870,40 @@ main {
 }
 
 /* ==========================================================================
-   Featured Project (FolioTech) & Portfolio
+   Featured Project (FolioTech) — machetă premium de browser
    ========================================================================== */
 .projects-section {
   padding: 5.5rem 0;
-  background-color: var(--bg-primary);
-  transition: background-color 0.3s ease;
 }
 
 .featured-project-card {
-  background: var(--card-bg);
-  border: 2px solid var(--card-border);
-  border-radius: 22px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 24px;
   padding: 2.75rem;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--glass-shadow);
   position: relative;
   overflow: hidden;
   margin-bottom: 3.5rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.featured-project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.7), transparent);
+  pointer-events: none;
+}
+
 .featured-project-card:hover {
-  border-color: var(--brand-primary);
-  box-shadow: var(--shadow-glow);
+  border-color: var(--glass-hover-border);
+  box-shadow: var(--shadow-glow), var(--glass-shadow);
 }
 
 .featured-badge {
@@ -590,10 +912,10 @@ main {
   color: white;
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 0.35rem 0.9rem;
+  padding: 0.35rem 0.95rem;
   border-radius: 9999px;
   margin-bottom: 1.75rem;
-  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
 }
 
 .featured-grid {
@@ -615,8 +937,8 @@ main {
   height: 52px;
   border-radius: 12px;
   object-fit: contain;
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
   padding: 4px;
 }
 
@@ -646,50 +968,69 @@ main {
   margin-bottom: 1.75rem;
 }
 
+/* Tag-uri iluminate neon */
 .tech-chip {
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--brand-primary);
-  border-radius: 8px;
-  padding: 0.3rem 0.75rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  color: var(--chip-color);
+  border-radius: 9999px;
+  padding: 0.3rem 0.8rem;
   font-size: 0.825rem;
   font-weight: 600;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.18);
 }
 
 .tech-chip-small {
   background: var(--bg-tertiary);
   color: var(--text-secondary);
-  border-radius: 6px;
-  padding: 0.2rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  padding: 0.2rem 0.6rem;
   font-size: 0.75rem;
   font-weight: 500;
 }
 
+/* Metrici în cutii de sticlă, cifre mari */
 .featured-metrics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.9rem;
   margin-bottom: 2rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
-  padding: 1rem;
-  border-radius: 14px;
 }
 
 .metric-box {
   text-align: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 1rem 0.5rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.metric-box:hover {
+  border-color: var(--glass-hover-border);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
 }
 
 .metric-val {
   display: block;
   font-weight: 800;
-  font-size: 1.25rem;
-  color: var(--brand-primary);
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  background: var(--stat-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.15rem;
 }
 
 .metric-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .featured-actions {
@@ -708,13 +1049,13 @@ main {
   font-weight: 700;
   text-decoration: none;
   font-size: 1rem;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-live-project:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.45);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.55);
 }
 
 .live-indicator {
@@ -734,18 +1075,40 @@ main {
   animation: pulseGlow 1.8s infinite;
 }
 
-/* Browser Mockup Visual */
+/* Machetă browser de lux — lumini de reflexie laterale */
+.featured-visual {
+  perspective: 1200px;
+}
+
 .browser-mockup {
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--glass-shadow), 0 0 0 1px rgba(255, 255, 255, 0.02);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.featured-visual:hover .browser-mockup {
+  transform: translateY(-6px) rotateX(2deg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35), 0 0 42px rgba(99, 102, 241, 0.18);
+}
+
+.browser-mockup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.75), transparent);
+  z-index: 2;
 }
 
 .mockup-header {
   background: var(--bg-tertiary);
-  border-bottom: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--glass-border);
   padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
@@ -769,10 +1132,10 @@ main {
 .mockup-dots span:nth-child(3) { background-color: #10b981; }
 
 .mockup-url {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 6px;
-  padding: 0.25rem 0.75rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+  padding: 0.25rem 0.85rem;
   font-size: 0.75rem;
   color: var(--text-secondary);
   flex: 1;
@@ -783,13 +1146,29 @@ main {
 .mockup-body {
   padding: 3rem 1.5rem;
   text-align: center;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+}
+
+/* Reflexie laterală de lumină */
+.mockup-body::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 55%;
+  height: 200%;
+  background: linear-gradient(105deg, transparent, rgba(139, 92, 246, 0.08), transparent);
+  transform: rotate(10deg);
+  pointer-events: none;
 }
 
 .mockup-preview-inner .mockup-icon {
   font-size: 3rem;
   margin-bottom: 0.75rem;
   display: inline-block;
+  filter: drop-shadow(0 0 14px rgba(99, 102, 241, 0.4));
 }
 
 .mockup-preview-inner h4 {
@@ -809,23 +1188,24 @@ main {
 
 .mockup-btn {
   display: inline-block;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-primary);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
   padding: 0.5rem 1.25rem;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  border-radius: 9999px;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mockup-btn:hover {
   border-color: var(--brand-primary);
   color: var(--brand-primary);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
 }
 
-/* Other Projects Grid */
+/* Other Projects Grid — hover lift */
 .other-projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -833,18 +1213,20 @@ main {
 }
 
 .project-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
   padding: 1.75rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--card-hover-border);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(99, 102, 241, 0.12);
+  border-color: var(--glass-hover-border);
 }
 
 .project-card-header {
@@ -859,14 +1241,15 @@ main {
   font-weight: 700;
   color: var(--brand-primary);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .project-status-tag {
   font-size: 0.75rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
   padding: 0.2rem 0.55rem;
-  border-radius: 6px;
+  border-radius: 9999px;
   color: var(--text-muted);
 }
 
@@ -884,14 +1267,10 @@ main {
 }
 
 /* ==========================================================================
-   Services Section
+   Services — carduri Glassmorphism cu iconițe iluminate
    ========================================================================== */
 .services-section {
   padding: 5.5rem 0;
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--card-border);
-  border-bottom: 1px solid var(--card-border);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .services-grid {
@@ -901,33 +1280,36 @@ main {
 }
 
 .service-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
   padding: 2.2rem 1.75rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--brand-primary);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+  border-color: var(--glass-hover-border);
+  box-shadow: var(--shadow-md), 0 0 34px rgba(99, 102, 241, 0.16);
 }
 
 .service-icon-box {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.16), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(99, 102, 241, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
+  box-shadow: 0 0 22px rgba(99, 102, 241, 0.2), inset 0 0 14px rgba(99, 102, 241, 0.08);
 }
 
 .service-title {
@@ -961,18 +1343,19 @@ main {
 .check-bullet {
   color: var(--accent-green);
   font-weight: 700;
+  filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.5));
 }
 
 .btn-service-inquire {
   background: transparent;
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--glass-border);
   color: var(--brand-primary);
   padding: 0.75rem;
-  border-radius: 10px;
+  border-radius: 9999px;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
 }
 
@@ -980,6 +1363,108 @@ main {
   background: var(--brand-primary);
   color: white;
   border-color: var(--brand-primary);
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.4);
+}
+
+/* ==========================================================================
+   Testimonials — carduri de sticlă mată cu stele
+   ========================================================================== */
+.testimonials-section {
+  padding: 5.5rem 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.testimonial-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--glass-hover-border);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(16, 185, 129, 0.1);
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.star {
+  color: var(--accent-amber);
+  font-size: 1rem;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.55);
+}
+
+.testimonial-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 1.1rem;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.35);
+}
+
+.testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.testimonial-role {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.testimonial-project {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--chip-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
 }
 
 /* ==========================================================================
@@ -987,8 +1472,6 @@ main {
    ========================================================================== */
 .process-section {
   padding: 5.5rem 0;
-  background-color: var(--bg-primary);
-  transition: background-color 0.3s ease;
 }
 
 .process-timeline {
@@ -998,27 +1481,31 @@ main {
 }
 
 .process-step-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
   padding: 2rem 1.5rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-sm);
   position: relative;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .process-step-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--brand-primary);
+  transform: translateY(-5px);
+  border-color: var(--glass-hover-border);
+  box-shadow: var(--shadow-md), 0 0 26px rgba(99, 102, 241, 0.12);
 }
 
 .step-number {
   font-size: 2.2rem;
   font-weight: 900;
-  background: var(--brand-gradient);
+  background: var(--stat-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.75rem;
+  line-height: 1;
 }
 
 .step-title {
@@ -1038,9 +1525,6 @@ main {
    ========================================================================== */
 .bio-links-section {
   padding: 5.5rem 0;
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-  border-top: 1px solid var(--card-border);
-  transition: background-color 0.3s ease;
 }
 
 .bio-cards-container {
@@ -1055,28 +1539,37 @@ main {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
   padding: 1.25rem 1.75rem;
   text-decoration: none;
   color: inherit;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-sm);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
   width: 100%;
   text-align: left;
+  font-family: inherit;
 }
 
 .bio-link-card:hover {
-  transform: translateY(-3px) scale(1.01);
-  border-color: var(--brand-primary);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--glass-hover-border);
+  box-shadow: var(--shadow-md), 0 0 28px rgba(99, 102, 241, 0.14);
 }
 
 .bio-card-highlight {
-  border: 2px solid #22c55e;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, var(--card-bg) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--glass-bg) 60%);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.12);
+}
+
+.bio-link-card.bio-card-highlight:hover {
+  border-color: rgba(16, 185, 129, 0.75);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2), 0 0 34px rgba(16, 185, 129, 0.22);
 }
 
 .bio-card-icon {
@@ -1086,8 +1579,9 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  background: var(--bg-secondary);
+  border-radius: 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
   flex-shrink: 0;
 }
 
@@ -1110,31 +1604,31 @@ main {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--brand-primary);
-  background: rgba(99, 102, 241, 0.1);
+  background: var(--chip-bg);
   padding: 0.4rem 0.85rem;
   border-radius: 9999px;
   white-space: nowrap;
 }
 
 .bio-card-highlight .bio-card-action {
-  background: rgba(34, 197, 94, 0.15);
-  color: #16a34a;
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
 }
 
 .dark-mode .bio-card-highlight .bio-card-action {
-  color: #4ade80;
+  color: #34d399;
 }
 
 /* ==========================================================================
-   Project Inquiry Modal & Dual Action (WhatsApp + Email)
+   Project Inquiry Modal — finisaje vizuale de lux (logică 100% intactă)
    ========================================================================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(4, 6, 12, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1143,25 +1637,38 @@ main {
 }
 
 .modal-container {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 20px;
+  background: var(--modal-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 22px;
   padding: 2.25rem;
   width: 100%;
   max-width: 520px;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 50px rgba(99, 102, 241, 0.12);
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   max-height: 90vh;
   overflow-y: auto;
+}
+
+.modal-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.7), transparent);
+  pointer-events: none;
 }
 
 .modal-close-btn {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -1171,13 +1678,13 @@ main {
   justify-content: center;
   cursor: pointer;
   font-size: 1rem;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .modal-close-btn:hover {
-  background: var(--bg-tertiary);
+  background: var(--glass-bg);
   color: var(--text-primary);
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(90deg);
 }
 
 .modal-tag {
@@ -1185,17 +1692,19 @@ main {
   font-weight: 700;
   text-transform: uppercase;
   color: var(--brand-primary);
-  background: rgba(99, 102, 241, 0.1);
-  padding: 0.2rem 0.65rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  padding: 0.2rem 0.7rem;
   border-radius: 9999px;
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .modal-header h3 {
   font-size: 1.45rem;
   font-weight: 800;
   margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
 }
 
 .modal-header p {
@@ -1221,9 +1730,9 @@ main {
 .modal-form select,
 .modal-form textarea {
   padding: 0.75rem 1rem;
-  border-radius: 10px;
-  border: 1px solid var(--card-border);
-  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background-color: var(--input-bg);
   color: var(--text-primary);
   font-family: inherit;
   font-size: 0.95rem;
@@ -1235,7 +1744,7 @@ main {
 .modal-form select:focus,
 .modal-form textarea:focus {
   border-color: var(--brand-primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.22);
 }
 
 .modal-actions-dual {
@@ -1251,11 +1760,11 @@ main {
 }
 
 .btn-whatsapp-direct {
-  background: #22c55e;
+  background: linear-gradient(135deg, #10b981, #059669);
   color: white;
   border: none;
   padding: 0.75rem 1.2rem;
-  border-radius: 10px;
+  border-radius: 9999px;
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
@@ -1263,30 +1772,29 @@ main {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-whatsapp-direct:hover {
-  background: #16a34a;
-  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.5);
   transform: translateY(-1px);
 }
 
 .btn-primary {
-  background: var(--brand-primary);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: white;
   border: none;
   padding: 0.75rem 1.4rem;
-  border-radius: 10px;
+  border-radius: 9999px;
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: var(--brand-primary-hover);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.45);
+  transform: translateY(-1px);
 }
 
 .btn-primary:disabled {
@@ -1297,16 +1805,16 @@ main {
 .btn-secondary {
   background: transparent;
   color: var(--text-secondary);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--glass-border);
   padding: 0.75rem 1.2rem;
-  border-radius: 10px;
+  border-radius: 9999px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-secondary:hover {
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
   color: var(--text-primary);
 }
 
@@ -1318,6 +1826,7 @@ main {
 .success-icon {
   font-size: 3.5rem;
   margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
 }
 
 .modal-success-state h3 {
@@ -1333,9 +1842,9 @@ main {
 }
 
 .success-notice-box {
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
   padding: 1.25rem;
   margin: 1.25rem 0;
   text-align: center;
@@ -1353,20 +1862,78 @@ main {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: #22c55e;
+  background: linear-gradient(135deg, #10b981, #059669);
   color: white;
   text-decoration: none;
   font-weight: 700;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   margin-top: 0.75rem;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-whatsapp-action:hover {
-  background: #16a34a;
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4);
+  box-shadow: 0 4px 22px rgba(16, 185, 129, 0.5);
+}
+
+/* ==========================================================================
+   Mobile Floating Action Bar — conversie instantanee pe mobil
+   ========================================================================== */
+.mobile-action-bar {
+  display: none;
+  position: fixed;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 90;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  background: var(--modal-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.4);
+  transform: translateY(150%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+}
+
+.bar-visible {
+  transform: translateY(0);
+}
+
+.bar-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.85rem 0.5rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: filter 0.2s ease;
+}
+
+.bar-btn-whatsapp {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  animation: barPulse 2.4s ease-in-out infinite;
+}
+
+.bar-btn-offer {
+  background: var(--brand-gradient);
+  color: #fff;
+}
+
+.bar-btn:hover {
+  filter: brightness(1.1);
 }
 
 /* ==========================================================================
@@ -1374,10 +1941,11 @@ main {
    ========================================================================== */
 .site-footer {
   background-color: var(--footer-bg);
-  border-top: 1px solid var(--footer-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--glass-border);
   color: var(--text-secondary);
   padding: 4rem 0 2rem;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .footer-top {
@@ -1461,10 +2029,10 @@ main {
 
 .tech-tag {
   font-size: 0.75rem;
-  padding: 0.25rem 0.55rem;
+  padding: 0.25rem 0.6rem;
   background: var(--bg-tertiary);
-  border: 1px solid var(--card-border);
-  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
   color: var(--text-secondary);
   font-weight: 500;
 }
@@ -1474,7 +2042,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  border-top: 1px solid var(--card-border);
+  border-top: 1px solid var(--glass-border);
   font-size: 0.875rem;
 }
 
@@ -1492,23 +2060,24 @@ main {
 }
 
 .back-to-top-btn {
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
   color: var(--text-secondary);
   padding: 0.35rem 0.8rem;
-  border-radius: 8px;
+  border-radius: 9999px;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .back-to-top-btn:hover {
-  background: var(--bg-tertiary);
   color: var(--text-primary);
+  border-color: var(--glass-hover-border);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.15);
 }
 
 /* ==========================================================================
-   Responsive Adaptations (Special focus on Mobile Bio traffic)
+   Responsive Adaptations (Mobile Bio traffic)
    ========================================================================== */
 @media (max-width: 900px) {
   .featured-grid {
@@ -1523,6 +2092,14 @@ main {
 }
 
 @media (max-width: 768px) {
+  .mobile-action-bar {
+    display: flex;
+  }
+
+  .site-footer {
+    padding-bottom: 7.5rem;
+  }
+
   .mobile-menu-btn {
     display: block;
   }
@@ -1533,12 +2110,14 @@ main {
     top: 72px;
     left: 0;
     right: 0;
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--card-border);
+    background: var(--modal-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
     flex-direction: column;
     padding: 1.5rem;
     gap: 1.25rem;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
     animation: fadeIn 0.2s ease-out;
   }
 
@@ -1559,7 +2138,7 @@ main {
   }
 
   .hero {
-    padding: 4.5rem 1.25rem 3.5rem;
+    padding: 4.5rem 1.25rem 4rem;
   }
 
   .hero-cta-group {
@@ -1568,10 +2147,21 @@ main {
   }
 
   .btn-hero-primary,
+  .btn-hero-whatsapp,
   .btn-hero-secondary {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
     text-align: center;
+    justify-content: center;
+  }
+
+  .hero-trust-bar {
+    gap: 0.6rem;
+  }
+
+  .trust-item {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
   }
 
   .featured-project-card {
