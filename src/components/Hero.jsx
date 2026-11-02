@@ -1,68 +1,191 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-function Hero({ onOpenContact }) {
+const WORDS = ['aduc clienți.', 'se încarcă instant.', 'impresionează.', 'vând non-stop.'];
+
+function Hero({ onNavigate }) {
+  const canvasRef = useRef(null);
+  const [typed, setTyped] = useState('');
+
+  // Typewriter effect
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if (prefersReduced) {
+      setTyped(WORDS[0]);
+      return;
+    }
+
+    let wordIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+    let timer;
+
+    const tick = () => {
+      const word = WORDS[wordIdx];
+      setTyped(word.slice(0, charIdx));
+
+      if (!deleting && charIdx === word.length) {
+        deleting = true;
+        timer = setTimeout(tick, 1600);
+        return;
+      }
+      if (deleting && charIdx === 0) {
+        deleting = false;
+        wordIdx = (wordIdx + 1) % WORDS.length;
+      }
+      charIdx += deleting ? -1 : 1;
+      timer = setTimeout(tick, deleting ? 35 : 80);
+    };
+
+    tick();
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Canvas particle network
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    let particles = [];
+    let mouseX = -999;
+    let mouseY = -999;
+    let W, H;
+    let animId;
+
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = canvas.clientWidth;
+      H = canvas.clientHeight;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.round((W * H) / 16000);
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+        });
+      }
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    const parent = canvas.parentNode;
+    const handleMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
+    const handleLeave = () => {
+      mouseX = mouseY = -999;
+    };
+    parent.addEventListener('pointermove', handleMove);
+    parent.addEventListener('pointerleave', handleLeave);
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (!prefersReduced) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > W) p.vx *= -1;
+          if (p.y < 0 || p.y > H) p.vy *= -1;
+          const dx = p.x - mouseX;
+          const dy = p.y - mouseY;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 140 && d > 0) {
+            p.x += (dx / d) * 1.8;
+            p.y += (dy / d) * 1.8;
+          }
+        }
+        ctx.fillStyle = 'rgba(34,227,197,.8)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.8, 0, 6.3);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const ex = p.x - q.x;
+          const ey = p.y - q.y;
+          const dd = ex * ex + ey * ey;
+          if (dd < 14000) {
+            ctx.strokeStyle = `rgba(108,92,255,${0.5 * (1 - dd / 14000)})`;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+        }
+
+        const ddx = p.x - mouseX;
+        const ddy = p.y - mouseY;
+        if (ddx * ddx + ddy * ddy < 20000) {
+          ctx.strokeStyle = 'rgba(34,227,197,.6)';
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouseX, mouseY);
+          ctx.stroke();
+        }
+      }
+      if (!prefersReduced) animId = requestAnimationFrame(draw);
+    };
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+      parent.removeEventListener('pointermove', handleMove);
+      parent.removeEventListener('pointerleave', handleLeave);
+    };
+  }, []);
+
   return (
-    <section className="hero" aria-label="Prezentare dezvoltator">
-      <div className="hero-profile-area">
-        <div className="avatar-wrapper">
-          <div className="avatar-icon">💻</div>
-          <span className="avatar-ring"></span>
+    <section className="hero" style={{ padding: 0 }} id="top">
+      <canvas id="net" ref={canvasRef} aria-hidden="true"></canvas>
+      <div className="wrap">
+        <div className="tag">
+          <b></b>Disponibil pentru proiecte noi
         </div>
-
-        <div className="hero-status-pill">
-          <span className="badge-pulse"></span>
-          <span>Disponibil pentru proiecte & colaborări</span>
+        <h1>
+          Construiesc site-uri care
+          <span className="line2" aria-live="off">
+            <span>{typed}</span>
+            <span className="caret"></span>
+          </span>
+        </h1>
+        <p className="lead">
+          Sunt Alex, web developer. Landing page-uri, magazine online și platforme React, de la idee la lansare.
+        </p>
+        <div className="cta">
+          <a
+            className="btn"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('#contact');
+            }}
+            data-mag
+          >
+            Hai să vorbim
+          </a>
+          <a
+            className="btn ghost"
+            href="#proiecte"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('#proiecte');
+            }}
+          >
+            Vezi proiectele
+          </a>
         </div>
       </div>
-
-      <h1 className="hero-title">
-        Salut, sunt <span className="hero-name-highlight">Alex Sârbu</span> 👋 <br />
-        <span className="hero-gradient-text">Web Developer & UI Creator</span>
-      </h1>
-
-      <p className="hero-subtitle">
-        Construiesc site-uri web ultra-rapide, aplicații interactive (precum <strong>FolioTech</strong>) și magazine online de impact. Transform ideile tale în produse digitale de succes, optimizate pentru mobil și vânzări.
-      </p>
-
-      <div className="hero-cta-group">
-        <button 
-          className="btn-hero-primary" 
-          onClick={onOpenContact}
-        >
-          Cere o Ofertă Gratuită 🚀
-        </button>
-        <a 
-          href="#projects" 
-          className="btn-hero-secondary"
-        >
-          Vezi Proiectele Mele ↓
-        </a>
-      </div>
-
-      <div className="hero-quick-pills">
-        <a 
-          href="https://wa.me/40727316319?text=Salut%20Alex%2C%20am%20v%C4%83zut%20portofoliul%20t%C4%83u%20%C8%99i%20a%C8%99%20dori%20s%C4%83%20discut%C4%83m%20despre%20un%20proiect%20web!" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="quick-pill quick-pill-whatsapp"
-        >
-          <span>💬</span> WhatsApp: 0727 316 319
-        </a>
-        <a 
-          href="mailto:alxsarbu29@gmail.com" 
-          className="quick-pill"
-        >
-          <span>✉️</span> alxsarbu29@gmail.com
-        </a>
-        <a 
-          href="https://github.com/alxsam29" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="quick-pill"
-        >
-          <span>🐙</span> GitHub: alxsam29
-        </a>
-      </div>
+      <div className="scroll" aria-hidden="true"></div>
     </section>
   );
 }
