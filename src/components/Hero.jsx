@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import PhoneMockup from './PhoneMockup.jsx';
 
 const WORDS = ['aduc clienți.', 'se încarcă instant.', 'impresionează.', 'vând non-stop.'];
 
@@ -148,41 +149,55 @@ function Hero({ onNavigate }) {
     <section className="hero" style={{ padding: 0 }} id="top">
       <canvas id="net" ref={canvasRef} aria-hidden="true"></canvas>
       <div className="wrap">
-        <div className="tag">
-          <b></b>Disponibil pentru proiecte noi
-        </div>
-        <h1>
-          Construiesc site-uri care
-          <span className="line2" aria-live="off">
-            <span>{typed}</span>
-            <span className="caret"></span>
-          </span>
-        </h1>
-        <p className="lead">
-          Sunt Alex, web developer. Landing page-uri, magazine online și platforme React, de la idee la lansare.
-        </p>
-        <div className="cta">
-          <a
-            className="btn"
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('#contact');
-            }}
-            data-mag
-          >
-            Hai să vorbim
-          </a>
-          <a
-            className="btn ghost"
-            href="#proiecte"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('#proiecte');
-            }}
-          >
-            Vezi proiectele
-          </a>
+        <div className="hero-grid">
+          <div className="hero-content">
+            <div className="tag">
+              <b></b>Disponibil pentru proiecte noi
+            </div>
+            <h1>
+              Construiesc site-uri care
+              <span className="line2" aria-live="off">
+                <span>{typed}</span>
+                <span className="caret"></span>
+              </span>
+            </h1>
+            <p className="lead">
+              Sunt Alex, web developer. Landing page-uri, magazine online și platforme React, de la idee la lansare.
+            </p>
+            <div className="cta">
+              <a
+                className="btn"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('#contact');
+                }}
+              >
+                Hai să vorbim
+              </a>
+              <a
+                className="btn ghost"
+                href="#proiecte"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('#proiecte');
+                }}
+              >
+                Vezi proiectele
+              </a>
+            </div>
+            <div className="hero-badges">
+              {['React', 'Responsive', 'SEO', 'Încărcare rapidă'].map((b) => (
+                <span key={b} className="hero-tag-badge">
+                  {b}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="hero-phone-col">
+            <PhoneMockup />
+          </div>
         </div>
       </div>
       <div className="scroll" aria-hidden="true"></div>
