@@ -2,83 +2,107 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
-import Stats from './components/Stats.jsx';
-import Projects from './components/Projects.jsx';
+import Marquee from './components/Marquee.jsx';
 import Services from './components/Services.jsx';
+import Projects from './components/Projects.jsx';
 import Process from './components/Process.jsx';
-import SocialLinks from './components/SocialLinks.jsx';
+import Faq from './components/Faq.jsx';
+import ContactSection from './components/ContactSection.jsx';
+import ContactPage from './components/ContactPage.jsx';
 import Footer from './components/Footer.jsx';
-import ContactModal from './components/ContactModal.jsx';
+import { useReveal } from './hooks/useReveal.js';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    try {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        return savedTheme === 'dark';
-      }
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    } catch {
-      return false;
-    }
-  });
+  const [view, setView] = useState('home'); // 'home' | 'contact'
+  const [hash, setHash] = useState('');
+  const revealRef = useReveal();
+  const glowRef = React.useRef(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  // Sync hash → view
   useEffect(() => {
-    try {
-      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    } catch (e) {
-      console.warn('Nu s-a putut salva tema:', e);
-    }
-    document.documentElement.classList.remove('dark-mode-preload');
-  }, [darkMode]);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (e) => {
-      const hasSavedTheme = localStorage.getItem('theme');
-      if (!hasSavedTheme) {
-        setDarkMode(e.matches);
+    const handleHash = () => {
+      const h = location.hash.slice(1);
+      if (h === 'contact') {
+        setView('contact');
+      } else {
+        setView('home');
+        setHash(h);
       }
     };
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
+  // Scroll to section when navigating within home view
+  useEffect(() => {
+    if (view !== 'home') return;
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: 'auto' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }, [view, hash]);
+
+  // Cursor glow effect
+  useEffect(() => {
+    const glow = glowRef.current;
+    if (!glow) return;
+    const handleMove = (e) => {
+      glow.style.setProperty('--mx', e.clientX + 'px');
+      glow.style.setProperty('--my', e.clientY + 'px');
+    };
+    window.addEventListener('pointermove', handleMove);
+    return () => window.removeEventListener('pointermove', handleMove);
+  }, []);
+
+  const handleNavigate = (target) => {
+    if (target === '#contact') {
+      setView('contact');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    } else {
+      setView('home');
+      const section = target.slice(1);
+      setHash(section);
+      // Use hash so the scroll effect fires
+      window.location.hash = target;
+    }
   };
 
-  const handleOpenContact = () => {
-    setIsModalOpen(true);
-  };
+  // Re-run reveal observer when switching back to home view
+  useEffect(() => {
+    if (view === 'home') {
+      // Trigger a resize to re-evaluate scroll-dependent effects
+      window.dispatchEvent(new Event('resize'));
+    }
+  }, [view]);
 
   return (
-    <div className={`app-wrapper ${darkMode ? 'dark-mode' : ''}`}>
-      <Header 
-        darkMode={darkMode} 
-        toggleDarkMode={toggleDarkMode} 
-        onOpenContact={handleOpenContact}
-      />
+    <>
+      <div id="glow" ref={glowRef}></div>
+      <Header onNavigate={handleNavigate} />
       <main>
-        <Hero onOpenContact={handleOpenContact} />
-        <Stats />
-        <Projects />
-        <Services onOpenContact={handleOpenContact} />
-        <Process />
-        <SocialLinks onOpenContact={handleOpenContact} />
+        {view === 'contact' ? (
+          <ContactPage onNavigate={handleNavigate} />
+        ) : (
+          <div ref={revealRef}>
+            <Hero onNavigate={handleNavigate} />
+            <Marquee />
+            <Services onNavigate={handleNavigate} />
+            <Projects onNavigate={handleNavigate} />
+            <Process />
+            <Faq />
+            <ContactSection onNavigate={handleNavigate} />
+          </div>
+        )}
       </main>
       <Footer />
-      
-      <ContactModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
-    </div>
+    </>
   );
 }
 

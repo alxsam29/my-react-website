@@ -6,6 +6,8 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
+    // Allow the preview proxy host in sandbox mode
+    allowedHosts: process.env.BASE44_PREVIEW_MODE === '1' ? true : undefined,
     watch: {
       usePolling: true,
       interval: 1000,

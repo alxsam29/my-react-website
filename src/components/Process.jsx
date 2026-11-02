@@ -1,46 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+
+const STEPS = [
+  { n: '1', title: 'Discuție', desc: 'Îmi spui ce vrei să obții. Primești o estimare de preț și termen.' },
+  { n: '2', title: 'Schiță', desc: 'Îți arăt structura și aspectul înainte să scriu cod, apoi ajustăm.' },
+  { n: '3', title: 'Dezvoltare', desc: 'Construiesc site-ul și ți-l arăt la fiecare etapă pentru feedback.' },
+  { n: '4', title: 'Lansare', desc: 'Îl pun online pe domeniul tău și îți arăt cum îl administrezi singur.' },
+];
 
 function Process() {
-  const steps = [
-    {
-      num: "01",
-      title: "Discuție & Strategie",
-      desc: "Vorbim despre ideea ta, obiectivele afacerii și publicul țintă. Stabilim arhitectura ideală și conținutul de care ai nevoie."
-    },
-    {
-      num: "02",
-      title: "Design & Prototip",
-      desc: "Creionez aspectul vizual: estetică modernă, contrast corect, animații subtile și o structură care ghidează vizitatorul spre acțiune."
-    },
-    {
-      num: "03",
-      title: "Dezvoltare & Testare",
-      desc: "Scriu cod curat și rapid folosind React și tehnologii moderne. Mă asigur că site-ul se mișcă impecabil pe orice telefon sau tabletă."
-    },
-    {
-      num: "04",
-      title: "Lansare & Suport",
-      desc: "Publicăm site-ul online (pe Vercel / server dedicat), configurăm domeniul și rămân alături de tine pentru modificări ulterioare."
-    }
-  ];
+  const stepsRef = useRef(null);
+  const fillRef = useRef(null);
+
+  useEffect(() => {
+    const updateFill = () => {
+      const steps = stepsRef.current;
+      const fill = fillRef.current;
+      if (!steps || !fill) return;
+      const rect = steps.getBoundingClientRect();
+      const progress = (window.innerHeight * 0.6 - rect.top) / rect.height;
+      fill.style.height = `${Math.max(0, Math.min(1, progress)) * 100}%`;
+    };
+    updateFill();
+    window.addEventListener('scroll', updateFill, { passive: true });
+    return () => window.removeEventListener('scroll', updateFill);
+  }, []);
 
   return (
-    <section id="process" className="process-section" aria-label="Procesul de lucru">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-eyebrow">Simplu și Transparent</span>
-          <h2 className="section-title">Cum Colaborăm</h2>
-          <p className="section-description">
-            Un proces predictibil, fără bătăi de cap tehnice pentru tine, de la prima idee până când site-ul tău este live pe internet.
-          </p>
-        </div>
-
-        <div className="process-timeline">
-          {steps.map((step, idx) => (
-            <div className="process-step-card" key={idx}>
-              <div className="step-number">{step.num}</div>
-              <h3 className="step-title">{step.title}</h3>
-              <p className="step-desc">{step.desc}</p>
+    <section id="proces">
+      <div className="wrap">
+        <h2 className="rv">Cum lucrăm împreună</h2>
+        <p className="sub rv">Patru pași, fără surprize.</p>
+        <div className="steps" ref={stepsRef}>
+          <div className="fill" ref={fillRef}></div>
+          {STEPS.map((step) => (
+            <div className="st" key={step.n} data-n={step.n}>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
             </div>
           ))}
         </div>

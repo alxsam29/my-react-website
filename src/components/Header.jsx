@@ -1,66 +1,105 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Header({ darkMode, toggleDarkMode, onOpenContact }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+function Header({ onNavigate }) {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const closeMenu = () => setMobileMenuOpen(false);
+  const setMenu = (open) => {
+    setMenuOpen(open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  const handleNav = (hash) => {
+    setMenu(false);
+    onNavigate(hash);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setMenu(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  const menuItems = [
+    { label: 'Acasă', hash: '#top' },
+    { label: 'Servicii', hash: '#servicii' },
+    { label: 'Proiecte', hash: '#proiecte' },
+    { label: 'Proces', hash: '#proces' },
+    { label: 'Întrebări', hash: '#faq' },
+  ];
 
   return (
-    <header className="site-header">
-      <div className="container header-container">
-        <a href="#" className="brand-logo" onClick={closeMenu}>
-          <span className="brand-icon">⚡</span>
-          <span className="brand-text">Alex<span className="brand-dot">.dev</span></span>
-        </a>
-
-        <nav className={`main-nav ${mobileMenuOpen ? 'nav-open' : ''}`} aria-label="Navigație principală">
-          <ul className="nav-links">
-            <li>
-              <a href="#projects" onClick={closeMenu}>Proiecte</a>
-            </li>
-            <li>
-              <a href="#services" onClick={closeMenu}>Servicii</a>
-            </li>
-            <li>
-              <a href="#process" onClick={closeMenu}>Cum Lucrez</a>
-            </li>
-            <li>
-              <a href="#contact" onClick={closeMenu}>Link in Bio</a>
-            </li>
-          </ul>
-
-          <div className="nav-actions">
-            <button 
-              className="btn-header-cta" 
-              onClick={() => {
-                closeMenu();
-                onOpenContact();
+    <>
+      <header>
+        <div className="wrap">
+          <nav>
+            <a
+              className="logo"
+              href="#top"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav('#top');
               }}
             >
-              Cere o Ofertă
-            </button>
+              alex<i>.dev</i>
+            </a>
+            <div className="links">
+              <a
+                className="pill"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav('#contact');
+                }}
+              >
+                Cere o ofertă
+              </a>
+              <button
+                className="burger"
+                type="button"
+                aria-label={menuOpen ? 'Închide meniul' : 'Deschide meniul'}
+                aria-expanded={menuOpen}
+                aria-controls="menu"
+                onClick={() => setMenu(!menuOpen)}
+              >
+                <span></span><span></span><span></span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
 
-            <button 
-              className="dark-mode-toggle" 
-              onClick={toggleDarkMode}
-              title={darkMode ? "Comută la tema luminoasă" : "Comută la tema întunecată"}
-              aria-label={darkMode ? "Activează modul luminos" : "Activează modul întunecat"}
+      <div id="menu" aria-hidden={!menuOpen} className={menuOpen ? 'open' : ''}>
+        <div className="menu-in">
+          {menuItems.map((item) => (
+            <a
+              key={item.hash}
+              href={item.hash}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav(item.hash);
+              }}
             >
-              {darkMode ? '☀️' : '🌙'}
-            </button>
-          </div>
-        </nav>
-
-        <button 
-          className="mobile-menu-btn" 
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Închide meniul" : "Deschide meniul"}
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? '✕' : '☰'}
-        </button>
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="cta-link"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('#contact');
+            }}
+          >
+            Contact <small>Cere o ofertă sau scrie-mi pe WhatsApp</small>
+          </a>
+        </div>
       </div>
-    </header>
+    </>
   );
 }
 
