@@ -11,12 +11,44 @@ import ContactSection from './components/ContactSection.jsx';
 import ContactPage from './components/ContactPage.jsx';
 import Footer from './components/Footer.jsx';
 import { useReveal } from './hooks/useReveal.js';
+import { translations } from './translations.js';
 
 function App() {
   const [view, setView] = useState('home'); // 'home' | 'contact'
   const [hash, setHash] = useState('');
   const revealRef = useReveal();
   const glowRef = React.useRef(null);
+
+  // Theme state: 'dark' | 'light' (saved in localStorage)
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
+
+  // Language state: 'ro' | 'en' (saved in localStorage)
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem('lang') || 'ro';
+  });
+
+  // Apply theme to document element
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  // Apply language persistence
+  useEffect(() => {
+    localStorage.setItem('lang', lang);
+  }, [lang]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+  const toggleLang = () => {
+    setLang((prev) => (prev === 'ro' ? 'en' : 'ro'));
+  };
+
+  const t = translations[lang] || translations.ro;
 
   // Sync hash → view
   useEffect(() => {
@@ -69,7 +101,6 @@ function App() {
       setView('home');
       const section = target.slice(1);
       setHash(section);
-      // Use hash so the scroll effect fires
       window.location.hash = target;
     }
   };
@@ -77,7 +108,6 @@ function App() {
   // Re-run reveal observer when switching back to home view
   useEffect(() => {
     if (view === 'home') {
-      // Trigger a resize to re-evaluate scroll-dependent effects
       window.dispatchEvent(new Event('resize'));
     }
   }, [view]);
@@ -85,23 +115,30 @@ function App() {
   return (
     <>
       <div id="glow" ref={glowRef}></div>
-      <Header onNavigate={handleNavigate} />
+      <Header
+        onNavigate={handleNavigate}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        lang={lang}
+        onToggleLang={toggleLang}
+        t={t}
+      />
       <main>
         {view === 'contact' ? (
-          <ContactPage onNavigate={handleNavigate} />
+          <ContactPage onNavigate={handleNavigate} t={t} />
         ) : (
           <div ref={revealRef}>
-            <Hero onNavigate={handleNavigate} />
+            <Hero onNavigate={handleNavigate} t={t} />
             <Marquee />
-            <Services onNavigate={handleNavigate} />
-            <Projects onNavigate={handleNavigate} />
-            <Process />
-            <Faq />
-            <ContactSection onNavigate={handleNavigate} />
+            <Services onNavigate={handleNavigate} t={t} />
+            <Projects onNavigate={handleNavigate} t={t} />
+            <Process t={t} />
+            <Faq t={t} />
+            <ContactSection onNavigate={handleNavigate} t={t} />
           </div>
         )}
       </main>
-      <Footer />
+      <Footer t={t} />
     </>
   );
 }

@@ -4,67 +4,11 @@ const WA_NUMBER = '40727316319';
 const EMAIL = 'alxsarbu29@gmail.com';
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/alxsarbu29@gmail.com';
 
-const subjects = [
-  'Cerere ofertă',
-  'Soluții web',
-  'Automatizări',
-  'Parteneriat',
-  'Altceva',
-];
-
-const interests = [
-  'Landing page',
-  'Magazin online',
-  'Platformă web',
-  'Automatizări AI / n8n',
-  'Mentenanță 24/7',
-  'Nu sunt sigur încă',
-];
-
-const budgets = [
-  'sub 1.000€',
-  '1.000 – 3.000€',
-  '3.000 – 10.000€',
-  'peste 10.000€',
-  'Nu sunt sigur încă',
-];
-
 const methods = [
   { l: 'Email', icon: '✉️' },
-  { l: 'Telefon', icon: '📞' },
+  { l: 'Telefon / Phone', icon: '📞' },
   { l: 'WhatsApp', icon: '💬' },
   { l: 'Video call', icon: '📹' },
-];
-
-const metrics = [
-  ['< 24h', 'răspuns în zile lucrătoare'],
-  ['30 min', 'discuție gratuită'],
-  ['€0', 'cost pentru prima discuție'],
-  ['RO · EN', 'vorbim ambele limbi'],
-];
-
-const ticker = [
-  'Răspuns în sub 24h',
-  'Apel gratuit de 30 min',
-  'Ofertă clară, fără costuri ascunse',
-  'NDA la cerere',
-  'Cod curat și rapid',
-  'Suport după lansare',
-  'Design personalizat',
-];
-
-const steps = [
-  ['Citim cererea', 'Analizez ce mi-ai trimis și pregătesc întrebările potrivite, ca să nu pierdem timp.'],
-  ['Apel de 30 minute', 'Discutăm obiectivele, publicul și ce înseamnă succes pentru proiectul tău. Gratuit.'],
-  ['Ofertă și arhitectură clară', 'Primești o propunere scrisă: ce construim, cu ce tehnologii, preț fix și termen.'],
-  ['Începem dezvoltarea', 'După acord, pornim. Vezi progresul pe parcurs și ai un link de previzualizare.'],
-];
-
-const faqs = [
-  ['Cât de repede primesc răspuns?', 'În zile lucrătoare răspund în mai puțin de 24 de ore, de cele mai multe ori în aceeași zi. Pe WhatsApp e de obicei și mai rapid.'],
-  ['Prima discuție costă ceva?', 'Nu. Primul apel de 30 de minute este gratuit și fără nicio obligație. Scopul e să vedem dacă și cum te pot ajuta.'],
-  ['Trebuie să știu exact ce specificații vreau?', 'Deloc. Spune-mi problema sau ideea, iar eu te ajut să o transformi într-un plan clar. Poți bifa „Nu sunt sigur încă”.'],
-  ['Ce se întâmplă cu informațiile mele? Semnați NDA?', 'Datele tale sunt folosite doar pentru a-ți răspunde. Dacă proiectul e sensibil, semnez un acord de confidențialitate (NDA) înainte să intrăm în detalii.'],
 ];
 
 function Chip({ on, children, onClick }) {
@@ -80,8 +24,9 @@ function Chip({ on, children, onClick }) {
   );
 }
 
-function ContactPage({ onNavigate }) {
-  const [subject, setSubject] = useState(subjects[0]);
+function ContactPage({ onNavigate, t }) {
+  const cp = t.contactPage;
+  const [subject, setSubject] = useState(cp.subjects[0]);
   const [picked, setPicked] = useState([]);
   const [budget, setBudget] = useState('');
   const [method, setMethod] = useState('WhatsApp');
@@ -99,13 +44,13 @@ function ContactPage({ onNavigate }) {
 
   const validate = () => {
     const errs = {};
-    if (!f.name.trim()) errs.name = 'Completează numele tău';
+    if (!f.name.trim()) errs.name = 'Completează numele / Please enter your name';
     if (!f.email.trim()) {
-      errs.email = 'Completează adresa de email';
+      errs.email = 'Completează email-ul / Please enter your email';
     } else if (!/\S+@\S+\.\S+/.test(f.email)) {
-      errs.email = 'Email-ul nu este valid';
+      errs.email = 'Email-ul nu este valid / Invalid email address';
     }
-    if (!agree) errs.agree = 'Te rog să accepți prelucrarea datelor';
+    if (!agree) errs.agree = 'Te rog să accepți prelucrarea datelor / Please accept terms';
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -113,13 +58,13 @@ function ContactPage({ onNavigate }) {
   const buildWaMessage = () => {
     const lines = [
       `Salut Alex! Subiect: ${subject}`,
-      `Nume: ${f.name}${f.company ? ` (${f.company})` : ''}`,
+      `Nume / Name: ${f.name}${f.company ? ` (${f.company})` : ''}`,
       `Email: ${f.email}`,
-      f.phone && `Telefon: +40 ${f.phone}`,
-      picked.length && `Interes: ${picked.join(', ')}`,
-      budget && `Buget: ${budget}`,
+      f.phone && `Telefon / Phone: +40 ${f.phone}`,
+      picked.length && `Interes / Interest: ${picked.join(', ')}`,
+      budget && `Buget / Budget: ${budget}`,
       `Contact preferat: ${method}`,
-      f.details && `\nDetalii: ${f.details}`,
+      f.details && `\nDetalii / Details: ${f.details}`,
     ].filter(Boolean);
     return lines.join('\n');
   };
@@ -195,31 +140,29 @@ function ContactPage({ onNavigate }) {
             onNavigate('#top');
           }}
         >
-          ← Înapoi la site
+          {t.nav.backToSite}
         </a>
       </div>
 
       {/* Header section */}
       <section className="contact-hero text-center">
         <div className="wrap">
-          <p className="contact-eyebrow">Contact</p>
+          <p className="contact-eyebrow">{cp.eyebrow}</p>
           <h1 className="contact-title">
-            Hai să construim <span className="text-gradient">ceva bun împreună</span>
+            {cp.title} <span className="text-gradient">{cp.titleGradient}</span>
           </h1>
-          <p className="contact-subtitle">
-            Spune-mi câteva lucruri despre proiect și revin cu întrebări, idei și o ofertă clară, cu preț și termen.
-          </p>
+          <p className="contact-subtitle">{cp.subtitle}</p>
 
           <div className="contact-pills">
-            {['Apel gratuit de descoperire', 'Fără obligații', 'NDA la cerere'].map((t) => (
-              <span key={t} className="contact-pill-item">
-                <span className="pill-check">🛡️</span> {t}
+            {cp.pills.map((p) => (
+              <span key={p} className="contact-pill-item">
+                <span className="pill-check">🛡️</span> {p}
               </span>
             ))}
           </div>
 
           <div className="contact-metrics-grid">
-            {metrics.map(([v, l]) => (
+            {cp.metrics.map(([v, l]) => (
               <div key={v} className="metric-card">
                 <p className="metric-val">{v}</p>
                 <p className="metric-lbl">{l}</p>
@@ -235,15 +178,12 @@ function ContactPage({ onNavigate }) {
           {isSubmitted ? (
             <div className="cbox success-box text-center">
               <div className="success-icon">🎉</div>
-              <h3>Mesajul a fost trimis cu succes!</h3>
-              <p className="success-desc">
-                Mulțumesc, <strong>{f.name}</strong>! Voi citi detaliile și revin în cel mult 24 de ore pe{' '}
-                {f.email}.
-              </p>
+              <h3>{cp.successTitle}</h3>
+              <p className="success-desc">{cp.successDesc(f.name, f.email)}</p>
               <div className="success-notice">
-                <span>Vrei un răspuns și mai rapid?</span>
+                <span>{cp.successFaster}</span>
                 <p className="text-muted" style={{ marginBottom: '12px' }}>
-                  Poți trimite aceleași detalii direct pe WhatsApp cu un singur click:
+                  {cp.successWaDesc}
                 </p>
                 <a
                   href={lastWaUrl}
@@ -251,7 +191,7 @@ function ContactPage({ onNavigate }) {
                   rel="noopener noreferrer"
                   className="btn btn-wa-action"
                 >
-                  💬 Deschide pe WhatsApp acum
+                  {cp.openWaNow}
                 </a>
               </div>
               <button
@@ -259,16 +199,16 @@ function ContactPage({ onNavigate }) {
                 className="btn-back-action"
                 onClick={handleReset}
               >
-                Trimite alt mesaj
+                {cp.sendAnother}
               </button>
             </div>
           ) : (
             <form className="cbox modern-form">
               {/* Subject selector */}
               <div className="form-group">
-                <label className="form-label">Despre ce este vorba?</label>
+                <label className="form-label">{cp.subjectLabel}</label>
                 <div className="chips-row">
-                  {subjects.map((s) => (
+                  {cp.subjects.map((s) => (
                     <Chip
                       key={s}
                       on={subject === s}
@@ -283,10 +223,10 @@ function ContactPage({ onNavigate }) {
               {/* Personal info grid */}
               <div className="form-grid-2">
                 <div className="form-group">
-                  <label className="form-label">Nume *</label>
+                  <label className="form-label">{cp.nameLabel}</label>
                   <input
                     className={`modern-input ${errors.name ? 'input-err' : ''}`}
-                    placeholder="Numele tău"
+                    placeholder={cp.namePlaceholder}
                     value={f.name}
                     onChange={(e) => setF({ ...f, name: e.target.value })}
                   />
@@ -295,22 +235,22 @@ function ContactPage({ onNavigate }) {
 
                 <div className="form-group">
                   <label className="form-label">
-                    Companie <span className="label-opt">(opțional)</span>
+                    {cp.companyLabel} <span className="label-opt">{cp.optional}</span>
                   </label>
                   <input
                     className="modern-input"
-                    placeholder="Numele firmei"
+                    placeholder={cp.companyPlaceholder}
                     value={f.company}
                     onChange={(e) => setF({ ...f, company: e.target.value })}
                   />
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Email *</label>
+                  <label className="form-label">{cp.emailLabel}</label>
                   <input
                     type="email"
                     className={`modern-input ${errors.email ? 'input-err' : ''}`}
-                    placeholder="nume@exemplu.ro"
+                    placeholder={cp.emailPlaceholder}
                     value={f.email}
                     onChange={(e) => setF({ ...f, email: e.target.value })}
                   />
@@ -319,13 +259,13 @@ function ContactPage({ onNavigate }) {
 
                 <div className="form-group">
                   <label className="form-label">
-                    Telefon <span className="label-opt">(opțional)</span>
+                    {cp.phoneLabel} <span className="label-opt">{cp.optional}</span>
                   </label>
                   <div className="phone-prefix-wrap">
                     <span className="phone-prefix">+40</span>
                     <input
                       className="modern-input prefix-attached"
-                      placeholder="7xx xxx xxx"
+                      placeholder={cp.phonePlaceholder}
                       value={f.phone}
                       onChange={(e) => setF({ ...f, phone: e.target.value })}
                     />
@@ -336,10 +276,10 @@ function ContactPage({ onNavigate }) {
               {/* Interests chips */}
               <div className="form-group">
                 <label className="form-label">
-                  Ce te interesează? <span className="label-opt">(poți alege mai multe)</span>
+                  {cp.interestsLabel} <span className="label-opt">{cp.multiple}</span>
                 </label>
                 <div className="chips-row">
-                  {interests.map((x) => (
+                  {cp.interests.map((x) => (
                     <Chip
                       key={x}
                       on={picked.includes(x)}
@@ -353,9 +293,9 @@ function ContactPage({ onNavigate }) {
 
               {/* Budget chips */}
               <div className="form-group">
-                <label className="form-label">Buget orientativ</label>
+                <label className="form-label">{cp.budgetLabel}</label>
                 <div className="chips-row">
-                  {budgets.map((b) => (
+                  {cp.budgets.map((b) => (
                     <Chip
                       key={b}
                       on={budget === b}
@@ -365,14 +305,12 @@ function ContactPage({ onNavigate }) {
                     </Chip>
                   ))}
                 </div>
-                <p className="form-help-text">
-                  Bugetul mă ajută să-ți propun soluția potrivită. Nu e un angajament: oferta finală o primești după discuție.
-                </p>
+                <p className="form-help-text">{cp.budgetNotice}</p>
               </div>
 
               {/* Preferred contact method */}
               <div className="form-group">
-                <label className="form-label">Cum preferi să te contactez?</label>
+                <label className="form-label">{cp.methodLabel}</label>
                 <div className="method-grid">
                   {methods.map(({ l, icon }) => (
                     <button
@@ -390,14 +328,14 @@ function ContactPage({ onNavigate }) {
               {/* Details textarea */}
               <div className="form-group">
                 <div className="details-header">
-                  <label className="form-label">Detalii proiect</label>
+                  <label className="form-label">{cp.detailsLabel}</label>
                   <span className="char-count">{f.details.length}/2000</span>
                 </div>
                 <textarea
                   rows={5}
                   maxLength={2000}
                   className="modern-input"
-                  placeholder="Ce vrei să construim? Ce problemă rezolvă? Ai un termen limită?"
+                  placeholder={cp.detailsPlaceholder}
                   value={f.details}
                   onChange={(e) => setF({ ...f, details: e.target.value })}
                 />
@@ -412,9 +350,7 @@ function ContactPage({ onNavigate }) {
                     onChange={(e) => setAgree(e.target.checked)}
                     className="gdpr-check"
                   />
-                  <span>
-                    Sunt de acord ca datele mele să fie folosite doar pentru a răspunde acestei cereri. Nu le partajez cu nimeni.
-                  </span>
+                  <span>{cp.gdpr}</span>
                 </label>
                 {errors.agree && <p className="err-msg">{errors.agree}</p>}
               </div>
@@ -427,10 +363,10 @@ function ContactPage({ onNavigate }) {
                   disabled={isLoading}
                   className="btn btn-full"
                 >
-                  {isLoading ? 'Se trimite cererea…' : '🚀 Trimite cererea pe email'}
+                  {isLoading ? cp.submitting : cp.submitEmail}
                 </button>
 
-                <p className="actions-divider">sau trimite direct</p>
+                <p className="actions-divider">{cp.orDirect}</p>
 
                 <div className="direct-actions-grid">
                   <button
@@ -438,7 +374,7 @@ function ContactPage({ onNavigate }) {
                     onClick={handleSendWa}
                     className="direct-btn wa"
                   >
-                    💬 Scrie pe WhatsApp (+40 727 316 319)
+                    {cp.writeWa}
                   </button>
                   <a
                     href={`mailto:${EMAIL}`}
@@ -456,10 +392,10 @@ function ContactPage({ onNavigate }) {
       {/* Marquee ticker */}
       <div className="ticker-banner">
         <div className="ticker-track">
-          {[...ticker, ...ticker].map((t, i) => (
+          {[...cp.ticker, ...cp.ticker].map((tk, i) => (
             <span key={i} className="ticker-item">
               <span className="ticker-star">✦</span>
-              {t}
+              {tk}
             </span>
           ))}
         </div>
@@ -468,16 +404,16 @@ function ContactPage({ onNavigate }) {
       {/* Next steps section */}
       <section className="steps-section">
         <div className="wrap">
-          <p className="contact-eyebrow">Pașii următori</p>
+          <p className="contact-eyebrow">{cp.stepsEyebrow}</p>
           <h2 className="section-title">
-            Ce se întâmplă <span className="text-gradient">după ce trimiți</span>
+            {cp.stepsTitle} <span className="text-gradient">{cp.stepsTitleGradient}</span>
           </h2>
           <div className="next-steps-grid">
-            {steps.map(([t, d], i) => (
-              <div key={t} className="step-card">
+            {cp.steps.map(([st, sd], i) => (
+              <div key={st} className="step-card">
                 <span className="step-num">{i + 1}</span>
-                <h3 className="step-title">{t}</h3>
-                <p className="step-desc">{d}</p>
+                <h3 className="step-title">{st}</h3>
+                <p className="step-desc">{sd}</p>
               </div>
             ))}
           </div>
@@ -487,12 +423,12 @@ function ContactPage({ onNavigate }) {
       {/* FAQ section */}
       <section className="contact-faq-section">
         <div className="wrap-narrow">
-          <p className="contact-eyebrow">Întrebări</p>
+          <p className="contact-eyebrow">{cp.faqEyebrow}</p>
           <h2 className="section-title">
-            Înainte <span className="text-gradient">să ne scrii</span>
+            {cp.faqTitle} <span className="text-gradient">{cp.faqTitleGradient}</span>
           </h2>
           <div className="contact-faqs">
-            {faqs.map(([q, a], i) => (
+            {cp.faqs.map(([q, a], i) => (
               <div key={q} className="faq-item">
                 <button
                   type="button"

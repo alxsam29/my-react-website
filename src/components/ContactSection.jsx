@@ -1,11 +1,11 @@
 import React from 'react';
 
-function ContactSection({ onNavigate }) {
+function ContactSection({ onNavigate, t }) {
   return (
     <section id="cta" className="contact">
       <div className="wrap">
-        <h2 className="rv">Ai un proiect în minte?</h2>
-        <p className="rv">Spune-mi ce ai nevoie și primești o ofertă clară, cu preț și termen.</p>
+        <h2 className="rv">{t.contactCta.title}</h2>
+        <p className="rv">{t.contactCta.desc}</p>
         <a
           className="btn rv"
           href="#contact"
@@ -15,7 +15,7 @@ function ContactSection({ onNavigate }) {
           }}
           data-mag
         >
-          Cere o ofertă
+          {t.contactCta.btn}
         </a>
       </div>
     </section>

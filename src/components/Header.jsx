@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Header({ onNavigate }) {
+function Header({ onNavigate, theme, onToggleTheme, lang, onToggleLang, t }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const setMenu = (open) => {
@@ -25,11 +25,11 @@ function Header({ onNavigate }) {
   }, []);
 
   const menuItems = [
-    { label: 'Acasă', hash: '#top' },
-    { label: 'Servicii', hash: '#servicii' },
-    { label: 'Proiecte', hash: '#proiecte' },
-    { label: 'Proces', hash: '#proces' },
-    { label: 'Întrebări', hash: '#faq' },
+    { label: t.nav.home, hash: '#top' },
+    { label: t.nav.services, hash: '#servicii' },
+    { label: t.nav.projects, hash: '#proiecte' },
+    { label: t.nav.process, hash: '#proces' },
+    { label: t.nav.faq, hash: '#faq' },
   ];
 
   return (
@@ -47,7 +47,32 @@ function Header({ onNavigate }) {
             >
               alex<i>.dev</i>
             </a>
+
             <div className="links">
+              {/* Language toggle button */}
+              <button
+                type="button"
+                className="lang-btn"
+                onClick={onToggleLang}
+                title={t.nav.langToggle}
+                aria-label={t.nav.langToggle}
+              >
+                <span className="lang-flag">{lang === 'ro' ? '🇷🇴' : '🇬🇧'}</span>
+                <span>{lang.toUpperCase()}</span>
+              </button>
+
+              {/* Theme toggle button */}
+              <button
+                type="button"
+                className="theme-btn"
+                onClick={onToggleTheme}
+                title={t.nav.themeToggle}
+                aria-label={t.nav.themeToggle}
+              >
+                <span className="theme-icon">{theme === 'dark' ? '☀️' : '🌙'}</span>
+              </button>
+
+              {/* CTA link */}
               <a
                 className="pill"
                 href="#contact"
@@ -56,8 +81,10 @@ function Header({ onNavigate }) {
                   handleNav('#contact');
                 }}
               >
-                Cere o ofertă
+                {t.nav.cta}
               </a>
+
+              {/* Mobile burger toggle */}
               <button
                 className="burger"
                 type="button"
@@ -73,8 +100,27 @@ function Header({ onNavigate }) {
         </div>
       </header>
 
+      {/* Mobile Menu */}
       <div id="menu" aria-hidden={!menuOpen} className={menuOpen ? 'open' : ''}>
         <div className="menu-in">
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '24px' }}>
+            <button
+              type="button"
+              className="lang-btn"
+              onClick={onToggleLang}
+            >
+              <span className="lang-flag">{lang === 'ro' ? '🇷🇴' : '🇬🇧'}</span>
+              <span>{lang === 'ro' ? 'Română' : 'English'}</span>
+            </button>
+            <button
+              type="button"
+              className="theme-btn"
+              onClick={onToggleTheme}
+            >
+              <span className="theme-icon">{theme === 'dark' ? '☀️ Luminos' : '🌙 Întunecat'}</span>
+            </button>
+          </div>
+
           {menuItems.map((item) => (
             <a
               key={item.hash}
@@ -95,7 +141,7 @@ function Header({ onNavigate }) {
               handleNav('#contact');
             }}
           >
-            Contact <small>Cere o ofertă sau scrie-mi pe WhatsApp</small>
+            {t.nav.contact} <small>{t.nav.cta}</small>
           </a>
         </div>
       </div>

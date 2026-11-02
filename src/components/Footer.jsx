@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Footer() {
+function Footer({ t }) {
   return (
     <footer>
       <div className="wrap">
         <span>© {new Date().getFullYear()} Alex</span>
-        <span>Construit cu React și atenție la detalii</span>
+        <span>{t.footer.builtWith}</span>
       </div>
     </footer>
   );

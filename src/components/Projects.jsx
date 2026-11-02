@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-function Projects({ onNavigate }) {
+function Projects({ onNavigate, t }) {
   const mockRef = useRef(null);
 
   const handleMockMove = (e) => {
@@ -22,11 +22,8 @@ function Projects({ onNavigate }) {
       <div className="wrap">
         <div className="proj rv">
           <div>
-            <h2>FolioTech</h2>
-            <p>
-              Platformă web interactivă, concepută și dezvoltată integral de mine: design, interfață și cod.
-              Ai o idee similară? O putem construi și pe a ta.
-            </p>
+            <h2>{t.projects.title}</h2>
+            <p>{t.projects.desc}</p>
             <a
               className="btn"
               href="#contact"
@@ -36,7 +33,7 @@ function Projects({ onNavigate }) {
               }}
               data-mag
             >
-              Vreau ceva similar
+              {t.projects.cta}
             </a>
           </div>
           <div className="mock" ref={mockRef} onPointerMove={handleMockMove} onPointerLeave={handleMockLeave}>
@@ -46,8 +43,8 @@ function Projects({ onNavigate }) {
               <i style={{ width: '85%' }}></i>
               <i style={{ width: '60%' }}></i>
             </div>
-            <span className="chip c1"><i></i>Încărcare rapidă</span>
-            <span className="chip c2"><i></i>Responsive</span>
+            <span className="chip c1"><i></i>{t.projects.fastLoad}</span>
+            <span className="chip c2"><i></i>{t.projects.responsive}</span>
           </div>
         </div>
       </div>

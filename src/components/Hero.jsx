@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PhoneMockup from './PhoneMockup.jsx';
 
-const WORDS = ['aduc clienți.', 'se încarcă instant.', 'impresionează.', 'vând non-stop.'];
-
-function Hero({ onNavigate }) {
+function Hero({ onNavigate, t }) {
   const canvasRef = useRef(null);
   const [typed, setTyped] = useState('');
+  const words = t.hero.words;
 
   // Typewriter effect
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     if (prefersReduced) {
-      setTyped(WORDS[0]);
+      setTyped(words[0]);
       return;
     }
 
@@ -21,7 +20,7 @@ function Hero({ onNavigate }) {
     let timer;
 
     const tick = () => {
-      const word = WORDS[wordIdx];
+      const word = words[wordIdx];
       setTyped(word.slice(0, charIdx));
 
       if (!deleting && charIdx === word.length) {
@@ -31,7 +30,7 @@ function Hero({ onNavigate }) {
       }
       if (deleting && charIdx === 0) {
         deleting = false;
-        wordIdx = (wordIdx + 1) % WORDS.length;
+        wordIdx = (wordIdx + 1) % words.length;
       }
       charIdx += deleting ? -1 : 1;
       timer = setTimeout(tick, deleting ? 35 : 80);
@@ -39,7 +38,7 @@ function Hero({ onNavigate }) {
 
     tick();
     return () => clearTimeout(timer);
-  }, []);
+  }, [words]);
 
   // Canvas particle network
   useEffect(() => {
@@ -152,18 +151,16 @@ function Hero({ onNavigate }) {
         <div className="hero-grid">
           <div className="hero-content">
             <div className="tag">
-              <b></b>Disponibil pentru proiecte noi
+              <b></b>{t.hero.available}
             </div>
             <h1>
-              Construiesc site-uri care
+              {t.hero.h1Prefix}{' '}
               <span className="line2" aria-live="off">
                 <span>{typed}</span>
                 <span className="caret"></span>
               </span>
             </h1>
-            <p className="lead">
-              Sunt Alex, web developer. Landing page-uri, magazine online și platforme React, de la idee la lansare.
-            </p>
+            <p className="lead">{t.hero.lead}</p>
             <div className="cta">
               <a
                 className="btn"
@@ -173,7 +170,7 @@ function Hero({ onNavigate }) {
                   onNavigate('#contact');
                 }}
               >
-                Hai să vorbim
+                {t.hero.talkCta}
               </a>
               <a
                 className="btn ghost"
@@ -183,11 +180,11 @@ function Hero({ onNavigate }) {
                   onNavigate('#proiecte');
                 }}
               >
-                Vezi proiectele
+                {t.hero.projectsCta}
               </a>
             </div>
             <div className="hero-badges">
-              {['React', 'Responsive', 'SEO', 'Încărcare rapidă'].map((b) => (
+              {t.hero.badges.map((b) => (
                 <span key={b} className="hero-tag-badge">
                   {b}
                 </span>
@@ -196,7 +193,7 @@ function Hero({ onNavigate }) {
           </div>
 
           <div className="hero-phone-col">
-            <PhoneMockup />
+            <PhoneMockup t={t} />
           </div>
         </div>
       </div>

@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const chat = [
-  { me: false, t: 'Salut! Vreau un site pentru afacerea mea.' },
-  { me: true, t: 'Sigur! Landing page, magazin sau platformă?' },
-  { me: false, t: 'Un magazin online, cu plată cu cardul.' },
-  { me: true, t: 'Perfect. Îți trimit azi o ofertă cu preț și termen. ✅' },
-];
-
-function PhoneMockup() {
+function PhoneMockup({ t }) {
   const [n, setN] = useState(1);
+  const chatList = t.phone.chat;
 
   useEffect(() => {
     const id = setInterval(() => {
-      setN((v) => (v >= chat.length + 2 ? 1 : v + 1));
+      setN((v) => (v >= chatList.length + 2 ? 1 : v + 1));
     }, 1600);
     return () => clearInterval(id);
-  }, []);
+  }, [chatList.length]);
 
   return (
     <div className="phone-wrapper">
@@ -35,24 +29,24 @@ function PhoneMockup() {
             <div>
               <p className="phone-contact-name">Alex · Web dev</p>
               <p className="phone-status-indicator">
-                <span className="status-dot"></span> online
+                <span className="status-dot"></span> {t.phone.status}
               </p>
             </div>
           </div>
 
           {/* Chat message body */}
           <div className="phone-messages">
-            {chat.slice(0, Math.min(n, chat.length)).map((m, i) => (
+            {chatList.slice(0, Math.min(n, chatList.length)).map((m, i) => (
               <div
                 key={i}
                 className={`phone-bubble ${m.me ? 'me' : 'client'} ${
-                  i === Math.min(n, chat.length) - 1 ? 'pop-in' : ''
+                  i === Math.min(n, chatList.length) - 1 ? 'pop-in' : ''
                 }`}
               >
                 {m.t}
               </div>
             ))}
-            {n < chat.length && (
+            {n < chatList.length && (
               <div className="phone-typing-indicator">
                 {[0, 1, 2].map((d) => (
                   <span
@@ -67,7 +61,7 @@ function PhoneMockup() {
 
           {/* Chat fake input */}
           <div className="phone-input-bar">
-            <span>Scrie un mesaj…</span>
+            <span>{t.phone.inputPlaceholder}</span>
           </div>
         </div>
       </div>

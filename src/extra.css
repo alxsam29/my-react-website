@@ -786,3 +786,139 @@
   font-size: 0.95rem;
   line-height: 1.6;
 }
+
+/* ==========================================================================
+   THEME & LANGUAGE TOGGLE CONTROLS
+   ========================================================================== */
+.controls-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-btn, .lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--body);
+}
+
+.theme-btn:hover, .lang-btn:hover {
+  border-color: var(--b);
+  transform: translateY(-1px);
+}
+
+.theme-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.lang-flag {
+  font-size: 1rem;
+}
+
+/* Light mode specific element adjustments */
+[data-theme="light"] header {
+  background: rgba(247, 249, 253, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] #glow {
+  background: radial-gradient(520px circle at var(--mx,50%) var(--my,30%), rgba(86, 69, 238, 0.12), transparent 70%);
+}
+
+[data-theme="light"] .phone-body {
+  background: #FFFFFF;
+  border-color: rgba(86, 69, 238, 0.25);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.15), 0 0 40px -10px rgba(86, 69, 238, 0.15);
+}
+
+[data-theme="light"] .phone-screen {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+}
+
+[data-theme="light"] .phone-notch {
+  background: #E2E8F0;
+}
+
+[data-theme="light"] .phone-contact-header {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #E2E8F0;
+}
+
+[data-theme="light"] .phone-contact-name {
+  color: #0F172A;
+}
+
+[data-theme="light"] .phone-bubble.client {
+  background: #E2E8F0;
+  color: #0F172A;
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .phone-typing-indicator {
+  background: #E2E8F0;
+}
+
+[data-theme="light"] .phone-input-bar {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  color: #64748B;
+}
+
+[data-theme="light"] .phone-badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0F172A;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .tag,
+[data-theme="light"] .hero-tag-badge,
+[data-theme="light"] .contact-pill-item,
+[data-theme="light"] .back-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: var(--line);
+}
+
+[data-theme="light"] .card,
+[data-theme="light"] .proj,
+[data-theme="light"] .cbox,
+[data-theme="light"] .metric-card,
+[data-theme="light"] .step-card,
+[data-theme="light"] .faq-item {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .chip-btn,
+[data-theme="light"] .method-btn,
+[data-theme="light"] .direct-btn,
+[data-theme="light"] .modern-input {
+  background: #FFFFFF;
+}
+
+[data-theme="light"] .chip-btn.active {
+  background: rgba(12, 191, 165, 0.12);
+  color: #0F172A;
+}
+
+[data-theme="light"] .method-btn.active {
+  background: rgba(86, 69, 238, 0.1);
+  color: #0F172A;
+}
+
+[data-theme="light"] #menu {
+  background: rgba(247, 249, 253, 0.98);
+}

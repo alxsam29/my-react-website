@@ -1,13 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const STEPS = [
-  { n: '1', title: 'Discuție', desc: 'Îmi spui ce vrei să obții. Primești o estimare de preț și termen.' },
-  { n: '2', title: 'Schiță', desc: 'Îți arăt structura și aspectul înainte să scriu cod, apoi ajustăm.' },
-  { n: '3', title: 'Dezvoltare', desc: 'Construiesc site-ul și ți-l arăt la fiecare etapă pentru feedback.' },
-  { n: '4', title: 'Lansare', desc: 'Îl pun online pe domeniul tău și îți arăt cum îl administrezi singur.' },
-];
-
-function Process() {
+function Process({ t }) {
   const stepsRef = useRef(null);
   const fillRef = useRef(null);
 
@@ -28,11 +21,11 @@ function Process() {
   return (
     <section id="proces">
       <div className="wrap">
-        <h2 className="rv">Cum lucrăm împreună</h2>
-        <p className="sub rv">Patru pași, fără surprize.</p>
+        <h2 className="rv">{t.process.title}</h2>
+        <p className="sub rv">{t.process.subtitle}</p>
         <div className="steps" ref={stepsRef}>
           <div className="fill" ref={fillRef}></div>
-          {STEPS.map((step) => (
+          {t.process.steps.map((step) => (
             <div className="st" key={step.n} data-n={step.n}>
               <h3>{step.title}</h3>
               <p>{step.desc}</p>

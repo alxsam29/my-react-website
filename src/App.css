@@ -10,6 +10,11 @@
   color-scheme:dark;box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
+[data-theme="light"]{
+  --bg:#F7F9FD;--panel:#FFFFFF;--ink:#0A0F1D;--muted:#5A667E;--line:#E2E8F2;
+  --a:#5645EE;--b:#0CBFA5;
+  color-scheme:light;
+}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth;height:100%;scroll-padding-top:80px}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--body);overflow-x:hidden}
